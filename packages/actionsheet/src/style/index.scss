@@ -1,0 +1,35 @@
+.t-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+    z-index: 12;
+
+    &-title {
+        padding: .3rem;
+        font-size: 14px;
+        line-height: 21px;
+        color: #888;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    &-menus {
+        padding: .32rem;
+        font-size: 18px;
+        line-height: 1;
+        color: #000;
+        text-align: center;
+
+        & + & {
+            border-top: 1px solid #ddd;
+        }
+    }
+
+    &-spacing {
+        height: .13rem;
+        background-color: #F2F2F2;
+    }
+}

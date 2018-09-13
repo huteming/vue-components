@@ -1,0 +1,17 @@
+@import '../../style-common/index.scss';
+
+.t-pickeraddress {
+    &-toolbar {
+        display: flex;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #eaeaea;
+
+        &__action {
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+            color: #26a2ff;
+        }
+    }
+}

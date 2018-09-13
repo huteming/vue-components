@@ -1,0 +1,15 @@
+@import './config.scss';
+@import './icon.scss';
+@import './text.scss';
+
+@each $key, $value in $flex-align {
+    .flex-align-#{$key} {
+        align-items: $value
+    }
+}
+
+@each $key, $value in $flex-justify {
+    .flex-justify-#{$key} {
+        justify-content: $value
+    }
+}

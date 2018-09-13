@@ -1,0 +1,9 @@
+@import '../../style-common/index.scss';
+
+.t-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    margin-bottom: 3px;
+}

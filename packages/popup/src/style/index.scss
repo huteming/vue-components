@@ -1,0 +1,59 @@
+.t-popup {
+    position: fixed;
+    background: #fff;
+    transition: .2s ease-out;
+    z-index: 12;
+
+    &-middle {
+        left: 50%;
+        transform: translate(-50%, 10px);
+        width: 4rem;
+        padding: 10px;
+        border-radius: 8px;
+
+        &::before {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border: solid transparent;
+            border-width: 10px;
+            border-bottom-color: #fff;
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: 50px;
+        }
+    }
+
+    &-top {
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: .15rem;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #fff;
+        text-align: center;
+        background-color: rgba(0,0,0,.7);
+    }
+
+    &-bottom {
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &-left {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 6rem;
+    }
+
+    &-right {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}

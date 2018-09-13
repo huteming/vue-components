@@ -1,0 +1,14 @@
+@import '../../style-common/index.scss';
+
+.t-panel {
+    &-header {
+        padding: 10px 8px 4px;
+        font-size: 12px;
+        color: #888;
+    }
+
+    &-content {
+        border-top: 1px solid #ececec;
+        border-bottom: 1px solid #ececec;
+    }
+}

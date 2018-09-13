@@ -1,0 +1,122 @@
+@import '../../style-common/index.scss';
+
+@mixin placeholder {
+    color: #E5E5E5;
+}
+
+.field-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 15px;
+    font-size: 14px;
+    color: #000;
+    letter-spacing: 0.21px;
+    // line-height: 21px;
+    line-height: 1.428571429;
+    min-height: 48px;
+    background: #fff;
+
+    &:nth-of-type(1) {
+        border-top: 1px solid #d9d9d9;
+    }
+
+    &:nth-last-of-type(1) {
+        border-bottom: 1px solid #d9d9d9;
+    }
+
+    &:nth-of-type(n + 2):before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 15px;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid #d9d9d9;
+        color: #d9d9d9;
+    }
+}
+
+.field-icon {
+    display: flex;
+    align-items: center;
+    padding-right: 6px;
+}
+
+.field-hd {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    min-width: 120px;
+    box-sizing: border-box;
+}
+
+.field-bd {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    flex: 1;
+
+    input, textarea {
+        padding: 5px 0 5px 4px;
+        width: 100%;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #555;
+        border: none;
+        background-color: transparent;
+        outline: medium;
+        caret-color: #8CD0FF; /* 光标颜色 */
+
+        &:focus {
+            border: none;
+        }
+    }
+
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        @include placeholder;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        @include placeholder;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        @include placeholder;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        @include placeholder;
+    }
+}
+
+.field-clear {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+
+    .field-ft-clear {
+        opacity: .2;
+    }
+}
+
+.field-ft {
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+
+    .field-ft-success {
+        color: $color-success;
+    }
+
+    .field-ft-error {
+        color: $color-danger;
+    }
+
+    .field-ft-warning {
+        color: $color-warning;
+    }
+}
+
+.field-slot {
+    display: flex;
+    align-items: center;
+}

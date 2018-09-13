@@ -1,0 +1,63 @@
+@import '../../style-common/index.scss';
+
+$radio-font-size: 17px;
+$radio-font-color: RGBA(85, 85, 85, 1);
+
+.t-radio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    font-size: $radio-font-size;
+    color: $radio-font-color;
+    letter-spacing: 0.21px;
+    line-height: 1;
+    background: #fff;
+
+    &-input {
+        display: none;
+    }
+
+    &-label {
+        order: 1;
+    }
+
+    &-icon {
+        position: relative;
+
+        &__circle {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            border-width: 2px;
+            border-style: solid;
+            opacity: 0.3;
+            box-sizing: border-box;
+        }
+
+        &__circle__solid {
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+    }
+
+    &.is-disabled &-label,
+    &.is-disabled &-icon {
+        color: #d9d9d9;
+    }
+
+    &:nth-of-type(n + 2):before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 20px;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid #d9d9d9;
+        color: #d9d9d9;
+    }
+}

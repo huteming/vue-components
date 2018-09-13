@@ -1,0 +1,126 @@
+.t-flexbox {
+    display: flex;
+
+    &-item {
+        &.is-self-auto {
+            align-self: auto;
+        }
+
+        &.is-self-start {
+            align-self: flex-start;
+        }
+
+        &.is-self-center {
+            align-self: center;
+        }
+
+        &.is-self-end {
+            align-self: flex-end;
+        }
+
+        &.is-self-baseline {
+            align-self: baseline;
+        }
+
+        &.is-self-stretch {
+            align-self: stretch;
+        }
+    }
+
+    // align
+    &.is-align-start {
+        align-items: flex-start;
+    }
+
+    &.is-align-center {
+        align-items: center;
+    }
+
+    &.is-align-end {
+        align-items: flex-end;
+    }
+
+    &.is-align-baseline {
+        align-items: baseline;
+    }
+
+    &.is-align-stretch {
+        align-items: stretch;
+    }
+
+    // justify
+    &.is-justify-start {
+        justify-content: flex-start,
+    }
+
+    &.is-justify-center {
+        justify-content: center,
+    }
+
+    &.is-justify-end {
+        justify-content: flex-end,
+    }
+
+    &.is-justify-between {
+        justify-content: space-between,
+    }
+
+    &.is-justify-around {
+        justify-content: space-around,
+    }
+
+    // direction
+    &.is-direction-row {
+        flex-direction: row;
+    }
+
+    &.is-direction-row-reverse {
+        flex-direction: row-reverse;
+    }
+
+    &.is-direction-column {
+        flex-direction: column;
+    }
+
+    &.is-direction-column-reverse {
+        flex-direction: column-reverse;
+    }
+
+    // wrap
+    &.is-wrap-nowrap {
+        flex-wrap: nowrap;
+    }
+
+    &.is-wrap-wrap {
+        flex-wrap: wrap;
+    }
+
+    &.is-wrap-wrap-reverse {
+        flex-wrap: wrap-reverse;
+    }
+
+    // align-content
+    &.is-content-start {
+        align-content: flex-start;
+    }
+
+    &.is-content-center {
+        align-content: center;
+    }
+
+    &.is-content-end {
+        align-content: flex-end;
+    }
+
+    &.is-content-between {
+        align-content: space-between;
+    }
+
+    &.is-content-around {
+        align-content: space-around;
+    }
+
+    &.is-content-stretch {
+        align-content: stretch;
+    }
+}

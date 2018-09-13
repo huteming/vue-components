@@ -1,0 +1,12 @@
+@import '../../style-common/index.scss';
+
+.t-image-picker {
+    &-file {
+        display: none;
+    }
+
+    &-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

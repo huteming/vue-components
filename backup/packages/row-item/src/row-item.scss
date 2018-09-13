@@ -1,0 +1,41 @@
+@import '../../style-common/index.scss';
+
+@mixin width ($percent) {
+    flex: 0 0 ($percent / 12 * 100%);
+    // width: ($percent / 12 * 100%);
+}
+
+@mixin offset ($percent) {
+    margin-left: $percent / 12 * 100%;
+}
+
+.col-0 { flex: 1; }
+.col-1 { @include width(1); }
+.col-2 { @include width(2); }
+.col-3 { @include width(3); }
+.col-4 { @include width(4); }
+.col-5 { @include width(5); }
+.col-6 { @include width(6); }
+.col-7 { @include width(7); }
+.col-8 { @include width(8); }
+.col-9 { @include width(9); }
+.col-10 { @include width(10); }
+.col-11 { @include width(11); }
+.col-12 { @include width(12); }
+
+.col-offset-1 { @include offset(1); }
+.col-offset-2 { @include offset(2); }
+.col-offset-3 { @include offset(3); }
+.col-offset-4 { @include offset(4); }
+.col-offset-5 { @include offset(5); }
+.col-offset-6 { @include offset(6); }
+.col-offset-7 { @include offset(7); }
+.col-offset-8 { @include offset(8); }
+.col-offset-9 { @include offset(9); }
+.col-offset-10 { @include offset(10); }
+.col-offset-11 { @include offset(11); }
+
+[class*=col-] {
+    overflow: hidden;
+    box-sizing: border-box;
+}
