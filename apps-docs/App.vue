@@ -15,7 +15,7 @@
             <navbar></navbar>
         </section>
 
-        <el-scrollbar class="container-main content"  wrap-style="overflow-X: auto;">
+        <el-scrollbar class="container-main content" :wrap-class="$style['container-scrollable']">
             <router-view></router-view>
         </el-scrollbar>
 
@@ -91,7 +91,7 @@ export default {
     -webkit-overflow-scrolling: touch;
 
     &-navbar {
-        flex: 0 0 250px;
+        flex: 0 0 280px;
     }
 
     &-main {
@@ -124,4 +124,11 @@ export default {
 </style>
 
 <style lang="scss" module>
+.container {
+    &-scrollable {
+        padding-bottom: 40px;
+        box-sizing: border-box;
+        overflow-x: auto;
+    }
+}
 </style>

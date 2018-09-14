@@ -1,26 +1,29 @@
 <template>
 <el-scrollbar class="scrollable" wrap-style="overflow-X: auto;" :native="false">
-    <nav class="nav">
-        <ul>
-            <li>
-                <router-link class="nav-link" :to="{ path: '/docs/quickstart' }">Quickstart</router-link>
-            </li>
+    <ul class="nav">
+        <li class="nav-item">
+            <router-link class="nav-spacing-1" :to="{ path: '/docs/quickstart' }">Quickstart</router-link>
+        </li>
 
-            <template v-for="(group, index) in navs">
-                <div :key="group.title" class="nav-label">
-                    {{ group.title }}
-                </div>
+        <li class="nav-item-container">
+            <div class="nav-item-title nav-spacing-1">Components</div>
 
-                <ul :key="index">
-                    <li v-for="item in group.list" :key="item.name">
-                        <router-link class="nav-link" :to="`/docs/${item.name}`" active-class="is-active">
-                            {{ item.desc }}
-                        </router-link>
-                    </li>
-                </ul>
-            </template>
-        </ul>
-    </nav>
+            <ul class="nav" v-for="group in navs" :key="group.title">
+                <li class="nav-item-container">
+                    <div class="nav-item-subtitle nav-spacing-2">{{ group.title }}</div>
+
+                    <ul class="nav">
+                        <li class="nav-item" v-for="item in group.list" :key="item.name">
+                            <router-link class="nav-spacing-3" :to="`/docs/${item.name}`">
+                                <span>{{ item.desc.split(' ')[0] }}</span>
+                                <span class="chinese">{{ item.desc.split(' ')[1] }}</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </el-scrollbar>
 </template>
 
@@ -39,37 +42,69 @@ export default {
 <style lang="scss" scoped>
 .scrollable {
     height: 100%;
+    padding: 42px 0;
+    background-color: #f9fafb;
+    box-sizing: border-box;
 }
 
 .nav {
     height: 100%;
-    padding: 42px 0 42px 20px;
-    background-color: #f9fafb;
-    color: #4c555a;
     font-size: 14px;
+    line-height: 40px;
     box-sizing: border-box;
 
-    &-label {
-        display: block;
-        padding: 8px;
-        color: #9da5b3;
-        font-weight: bold;
-    }
+    &-item {
+        &-title {
+            color: rgba(0, 0, 0, 0.85);
+            font-weight: bold;
+        }
 
-    &-link {
-        padding: 8px;
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        transition: color .2s;
+        &-subtitle {
+            color: rgba(0, 0, 0, 0.45);
+        }
+
+        > a {
+            display: block;
+            height: 40px;
+            color: rgba(0, 0, 0, 0.65);
+            transition: color .3s ease;
+            box-sizing: border-box;
+
+            &.router-link-active,
+            &:hover {
+                color: #1890ff;
+            }
+
+            &.router-link-active {
+                border-right: 3px solid #1890ff;
+                background-color: #e6f7ff;
+            }
+        }
+
+        .chinese {
+            font-size: 12px;
+            margin-left: 6px;
+            font-weight: normal;
+            opacity: .67;
+        }
 
         &.is-active {
             color: #4078c0;
             border-right: 2px solid;
         }
+    }
 
-        &:hover {
-            color: #4078c0;
+    &-spacing {
+        &-1 {
+            padding-left: 25px;
+        }
+
+        &-2 {
+            padding-left: 50px;
+        }
+
+        &-3 {
+            padding-left: 75px;
         }
     }
 }
