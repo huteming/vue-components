@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js");
 
 importScripts(
-  "/vue-components/precache-manifest.347af87cd042d9384d6d62bf0f120557.js"
+  "/vue-components/precache-manifest.dcdd1478bf6018fde8151747ed96d945.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "vue-components"});
+workbox.core.setCacheNameDetails({prefix: "tommy-ui"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
