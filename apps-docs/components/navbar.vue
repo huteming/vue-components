@@ -15,8 +15,8 @@
                     <ul class="nav">
                         <li class="nav-item" v-for="item in group.list" :key="item.name">
                             <router-link class="nav-spacing-3" :to="`/docs/${item.name}`">
-                                <span>{{ item.desc.split(' ')[0] }}</span>
-                                <span class="chinese">{{ item.desc.split(' ')[1] }}</span>
+                                <span>{{ item.english }}</span>
+                                <span class="chinese">{{ item.chinese }}</span>
                             </router-link>
                         </li>
                     </ul>
@@ -35,6 +35,9 @@ export default {
         return {
             navs: configNavs
         }
+    },
+
+    computed: {
     }
 }
 </script>

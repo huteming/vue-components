@@ -1,6 +1,6 @@
 <template>
 <div class="phone">
-    <iframe class="demo-page" frameborder="0" :src="path">
+    <iframe class="demo-page" frameborder="0" :src="examplePath">
     </iframe>
 </div>
 </template>
@@ -10,7 +10,7 @@ export default {
     name: 'phone',
 
     computed: {
-        path () {
+        examplePath () {
             const { origin, pathname } = location
 
             return `${origin}${pathname}#${this.$route.path.replace('docs', 'example')}`

@@ -12,33 +12,43 @@
 
     <main class="container">
         <section class="container-navbar">
-            <navbar></navbar>
+            <AppNavbar />
         </section>
 
-        <el-scrollbar class="container-main content" :wrap-class="$style['container-scrollable']">
-            <router-view></router-view>
-        </el-scrollbar>
+        <section class="container-main">
+            <AppContent :is-component="isComponent" />
+        </section>
 
-        <section class="container-phone">
-            <phone></phone>
+        <section class="container-phone" v-show="isComponent">
+            <AppPhone />
         </section>
     </main>
 
     <base-popup v-model="visibleNav" position="left">
-        <navbar></navbar>
+        <AppNavbar />
     </base-popup>
 </div>
 </template>
 
 <script>
-import Navbar from './components/navbar'
-import Phone from './components/phone'
+import AppNavbar from './components/navbar'
+import AppContent from './components/content'
+import AppPhone from './components/phone'
 import { Icon as BaseIcon, Popup as BasePopup } from 'tommy-ui'
 
 export default {
     data () {
         return {
-            visibleNav: false
+            visibleNav: false,
+            domQrnode: null
+        }
+    },
+
+    computed: {
+        isComponent () {
+            const path = this.$route.path
+
+            return path.indexOf('quickstart') === -1
         }
     },
 
@@ -49,8 +59,9 @@ export default {
     },
 
     components: {
-        Navbar,
-        Phone,
+        AppNavbar,
+        AppPhone,
+        AppContent,
         BaseIcon,
         BasePopup
     }
@@ -96,7 +107,6 @@ export default {
 
     &-main {
         flex: 1;
-        margin: 0 20px;
     }
 
     &-phone {
@@ -119,16 +129,6 @@ export default {
         &-phone {
             display: none;
         }
-    }
-}
-</style>
-
-<style lang="scss" module>
-.container {
-    &-scrollable {
-        padding-bottom: 40px;
-        box-sizing: border-box;
-        overflow-x: auto;
     }
 }
 </style>

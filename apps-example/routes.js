@@ -14,7 +14,7 @@ configNavs.forEach(nav => {
         routes.push({
             path: page.name,
             name: `${page.name}Example`,
-            meta: { title: page.desc },
+            meta: { title: `${page.english} ${page.chinese}`, ...page },
             component: () => import(`packages/${page.name}/demo/basic`)
         })
     })

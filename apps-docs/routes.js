@@ -1,12 +1,8 @@
 import 'sushi-ui'
 import 'highlight.js/styles/github-gist.css'
-import './assets/style/md.css'
+import './assets/style/md.scss'
 import 'element-ui/lib/theme-chalk/index.css'
 import configNavs from 'apps/config-doc-nav.json'
-import { Scrollbar } from 'element-ui'
-import Vue from 'vue'
-
-Vue.use(Scrollbar)
 
 let routes = [
     {
@@ -22,7 +18,7 @@ configNavs.forEach(nav => {
         routes.push({
             path: page.name,
             name: page.name,
-            meta: { title: page.desc },
+            meta: { title: `${page.english} ${page.chinese}`, ...page },
             component: () => import(`packages/${page.name}/README.md`)
         })
     })
