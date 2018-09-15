@@ -92,8 +92,8 @@ self.__precacheManifest = [
     "url": "/vue-components/js/chunk-2d0bd95c.452274bc.js"
   },
   {
-    "revision": "02bca606725dba58b0ef",
-    "url": "/vue-components/js/chunk-2d0bdcca.207b7cfa.js"
+    "revision": "a075865651caec5dd740",
+    "url": "/vue-components/js/chunk-2d0bdcca.3379117c.js"
   },
   {
     "revision": "ad97de7799a9acb20c94",
@@ -192,8 +192,8 @@ self.__precacheManifest = [
     "url": "/vue-components/css/chunk-439bcd1c.8f2ee587.css"
   },
   {
-    "revision": "daf72d9c08798482634b",
-    "url": "/vue-components/js/app.25148ed0.js"
+    "revision": "72aedc94621647b8ed2c",
+    "url": "/vue-components/js/app.269a97aa.js"
   },
   {
     "revision": "a4e69cf5b59671453e23",
@@ -328,10 +328,6 @@ self.__precacheManifest = [
     "url": "/vue-components/fonts/element-icons.2fad952a.woff"
   },
   {
-    "revision": "5909f667d77fc68679367f6aef781422",
-    "url": "/vue-components/img/phone.5909f667.png"
-  },
-  {
     "revision": "0813b32f64063e91f1b150323f404511",
     "url": "/vue-components/fonts/icon.0813b32f.woff"
   },
@@ -348,16 +344,20 @@ self.__precacheManifest = [
     "url": "/vue-components/fonts/icon.7ed45bda.ttf"
   },
   {
-    "revision": "21c23c0b450bc145264ac4b6b2b6b12f",
-    "url": "/vue-components/index.html"
+    "revision": "5909f667d77fc68679367f6aef781422",
+    "url": "/vue-components/img/phone.5909f667.png"
   },
   {
-    "revision": "3af34619f31acf54021c1f9edd912b03",
-    "url": "/vue-components/img/html5.png"
+    "revision": "9086c8c7ee16db57608a24c4a65ac378",
+    "url": "/vue-components/index.html"
   },
   {
     "revision": "71603a1b3853ddb516b35d4f17ea12f7",
     "url": "/vue-components/img/dengken.jpg"
+  },
+  {
+    "revision": "3af34619f31acf54021c1f9edd912b03",
+    "url": "/vue-components/img/html5.png"
   },
   {
     "revision": "9379f50040087f12bcd5aa5b7d10bb49",
@@ -376,15 +376,15 @@ self.__precacheManifest = [
     "url": "/vue-components/js/jweixin-1.2.0.js"
   },
   {
-    "revision": "35f627f6c7f15fdd722626f981759156",
-    "url": "/vue-components/js/qrcode.md"
-  },
-  {
     "revision": "306ebf3680236edfc62f2254b9fce7b2",
     "url": "/vue-components/js/qrcode.js"
   },
   {
-    "revision": "daf72d9c08798482634b",
+    "revision": "35f627f6c7f15fdd722626f981759156",
+    "url": "/vue-components/js/qrcode.md"
+  },
+  {
+    "revision": "72aedc94621647b8ed2c",
     "url": "/vue-components/css/app.621d35a9.css"
   }
 ];
