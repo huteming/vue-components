@@ -4,6 +4,14 @@
         <template v-if="isComponent">
             <span>{{ meta.english }} {{ meta.chinese }}</span>
             <i class="iconfont icon-qrcode markdown-header-icon" v-popover:qrcode></i>
+
+            <el-popover
+                ref="qrcode"
+                placement="bottom"
+                width="100"
+                trigger="hover">
+                <img :src="qrcodeImg" alt="" width="100%" height="100%" />
+            </el-popover>
         </template>
 
         <template v-else>
@@ -12,14 +20,6 @@
     </h1>
 
     <router-view></router-view>
-
-    <el-popover
-        ref="qrcode"
-        placement="bottom"
-        width="100"
-        trigger="hover">
-        <img :src="qrcodeImg" alt="" width="100%" height="100%" />
-    </el-popover>
 </el-scrollbar>
 </template>
 
