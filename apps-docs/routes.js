@@ -20,6 +20,10 @@ configNavs.forEach(nav => {
             name: page.name,
             meta: { title: `${page.english} ${page.chinese}`, ...page },
             component: () => import(`packages/${page.name}/README.md`)
+            // components: {
+            //     default: ,
+            //     example: () => import(`packages/${page.name}/demo/basic`)
+            // }
         })
     })
 })

@@ -14,6 +14,10 @@
 示例路由地址: /example/{name}
 示例文件地址: /packages/{name}/demo/basic.vue
 
-## desc
+## english
 
-组件描述
+英文名
+
+## chinese
+
+中文名

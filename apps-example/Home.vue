@@ -38,17 +38,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.page-example {
-    min-height: 100%;
-    background: #f5f5f9;
-
-    &-home {
-        padding: 27px 16px;
-    }
-}
-</style>
-
 <style lang="scss" scoped>
 .title {
     margin-bottom: 15px;

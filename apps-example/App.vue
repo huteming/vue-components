@@ -48,3 +48,44 @@ export default {
     transform: translate(-30px, 0);
 }
 </style>
+
+<style lang="scss">
+.page-example {
+    min-height: 100%;
+    background: #f5f5f9;
+
+    &-home {
+        padding: 27px 16px;
+    }
+}
+
+// 滚动条整体部分
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+// 滚动条两端的按钮
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+// 外层轨道
+::-webkit-scrollbar-track {
+}
+
+// 内层滚动槽
+::-webkit-scrollbar-track-piece {
+    background-color: #f3f3f3;
+}
+
+// 滚动的滑块
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(144, 147, 153, .5);
+    transition: .3s background-color;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(144, 147, 153, .7);
+}
+</style>

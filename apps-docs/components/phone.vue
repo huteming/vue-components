@@ -1,7 +1,11 @@
 <template>
 <div class="phone">
-    <iframe class="demo-page" frameborder="0" :src="examplePath">
+    <iframe class="phone-page" frameborder="0" :src="examplePath">
     </iframe>
+
+    <!-- <el-scrollbar class="phone-page" :wrap-class="$style['container-scrollable']">
+        <router-view name="example"></router-view>
+    </el-scrollbar> -->
 </div>
 </template>
 
@@ -19,7 +23,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .phone {
     width: 365px;
     height: 100%;
@@ -28,11 +32,11 @@ export default {
     background-repeat: no-repeat;
     background-size: 100%;
     box-sizing: border-box;
-}
 
-.demo-page {
-    width: 100%;
-    height: 580px;
-    background-color: #fff;
+    &-page {
+        width: 100%;
+        height: 580px;
+        background-color: #fff;
+    }
 }
 </style>
