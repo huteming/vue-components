@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.5.0/workbox-sw.js");
 
 importScripts(
-  "/vue-components/precache-manifest.b5a79c1c769851d6e31a2a04460a095d.js"
+  "/vue-components/precache-manifest.8f688c923c085c92d223b8727284c34c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "tommy-ui"});

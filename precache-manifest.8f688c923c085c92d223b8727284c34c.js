@@ -192,8 +192,8 @@ self.__precacheManifest = [
     "url": "/vue-components/css/chunk-439bcd1c.8f2ee587.css"
   },
   {
-    "revision": "72aedc94621647b8ed2c",
-    "url": "/vue-components/js/app.269a97aa.js"
+    "revision": "97686b8530f769b1e471",
+    "url": "/vue-components/js/app.e1b72039.js"
   },
   {
     "revision": "a4e69cf5b59671453e23",
@@ -348,16 +348,16 @@ self.__precacheManifest = [
     "url": "/vue-components/img/phone.5909f667.png"
   },
   {
-    "revision": "9086c8c7ee16db57608a24c4a65ac378",
+    "revision": "de2f8f82f936111e58c9d6170692eada",
     "url": "/vue-components/index.html"
-  },
-  {
-    "revision": "71603a1b3853ddb516b35d4f17ea12f7",
-    "url": "/vue-components/img/dengken.jpg"
   },
   {
     "revision": "3af34619f31acf54021c1f9edd912b03",
     "url": "/vue-components/img/html5.png"
+  },
+  {
+    "revision": "71603a1b3853ddb516b35d4f17ea12f7",
+    "url": "/vue-components/img/dengken.jpg"
   },
   {
     "revision": "9379f50040087f12bcd5aa5b7d10bb49",
@@ -376,15 +376,15 @@ self.__precacheManifest = [
     "url": "/vue-components/js/jweixin-1.2.0.js"
   },
   {
-    "revision": "306ebf3680236edfc62f2254b9fce7b2",
-    "url": "/vue-components/js/qrcode.js"
-  },
-  {
     "revision": "35f627f6c7f15fdd722626f981759156",
     "url": "/vue-components/js/qrcode.md"
   },
   {
-    "revision": "72aedc94621647b8ed2c",
+    "revision": "306ebf3680236edfc62f2254b9fce7b2",
+    "url": "/vue-components/js/qrcode.js"
+  },
+  {
+    "revision": "97686b8530f769b1e471",
     "url": "/vue-components/css/app.621d35a9.css"
   }
 ];
