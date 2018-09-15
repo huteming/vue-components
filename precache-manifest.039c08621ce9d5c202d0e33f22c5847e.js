@@ -192,8 +192,8 @@ self.__precacheManifest = [
     "url": "/vue-components/css/chunk-439bcd1c.8f2ee587.css"
   },
   {
-    "revision": "f76c9153fe3b5796de5b",
-    "url": "/vue-components/js/app.56646adf.js"
+    "revision": "daf72d9c08798482634b",
+    "url": "/vue-components/js/app.25148ed0.js"
   },
   {
     "revision": "a4e69cf5b59671453e23",
@@ -244,14 +244,6 @@ self.__precacheManifest = [
     "url": "/vue-components/js/chunk-6f42d325.c2defa53.js"
   },
   {
-    "revision": "3902b2df12f08d055804",
-    "url": "/vue-components/css/chunk-76428780.97808b4f.css"
-  },
-  {
-    "revision": "3902b2df12f08d055804",
-    "url": "/vue-components/js/chunk-76428780.af5fb69f.js"
-  },
-  {
     "revision": "b2ebda30b756fecdd8e8",
     "url": "/vue-components/css/chunk-79136f05.7b0aa540.css"
   },
@@ -292,6 +284,14 @@ self.__precacheManifest = [
     "url": "/vue-components/js/chunk-b2a3995e.c94e0e8a.js"
   },
   {
+    "revision": "32a878b9f990e112872a",
+    "url": "/vue-components/css/chunk-ea69a438.b5f8a6e7.css"
+  },
+  {
+    "revision": "32a878b9f990e112872a",
+    "url": "/vue-components/js/chunk-ea69a438.a78e5063.js"
+  },
+  {
     "revision": "6ce26f6f026901e3722b",
     "url": "/vue-components/css/chunk-f90b69ca.82bfc784.css"
   },
@@ -308,12 +308,28 @@ self.__precacheManifest = [
     "url": "/vue-components/js/chunk-vendors.32f97f22.js"
   },
   {
+    "revision": "05b2a99e9fd3433fdcdeeeda560e888c",
+    "url": "/vue-components/fonts/iconfont.05b2a99e.ttf"
+  },
+  {
+    "revision": "fe4b155790012d7d64b140cabdc483e4",
+    "url": "/vue-components/fonts/iconfont.fe4b1557.eot"
+  },
+  {
+    "revision": "936eac074a9dd35601ad80b3c210f17e",
+    "url": "/vue-components/img/iconfont.936eac07.svg"
+  },
+  {
     "revision": "6f0a76321d30f3c8120915e57f7bd77e",
     "url": "/vue-components/fonts/element-icons.6f0a7632.ttf"
   },
   {
     "revision": "2fad952a20fbbcfd1bf2ebb210dccf7a",
     "url": "/vue-components/fonts/element-icons.2fad952a.woff"
+  },
+  {
+    "revision": "5909f667d77fc68679367f6aef781422",
+    "url": "/vue-components/img/phone.5909f667.png"
   },
   {
     "revision": "0813b32f64063e91f1b150323f404511",
@@ -332,32 +348,16 @@ self.__precacheManifest = [
     "url": "/vue-components/fonts/icon.7ed45bda.ttf"
   },
   {
-    "revision": "5909f667d77fc68679367f6aef781422",
-    "url": "/vue-components/img/phone.5909f667.png"
-  },
-  {
-    "revision": "05b2a99e9fd3433fdcdeeeda560e888c",
-    "url": "/vue-components/fonts/iconfont.05b2a99e.ttf"
-  },
-  {
-    "revision": "fe4b155790012d7d64b140cabdc483e4",
-    "url": "/vue-components/fonts/iconfont.fe4b1557.eot"
-  },
-  {
-    "revision": "936eac074a9dd35601ad80b3c210f17e",
-    "url": "/vue-components/img/iconfont.936eac07.svg"
-  },
-  {
-    "revision": "69df30c66069da351e89bc326d067ece",
+    "revision": "21c23c0b450bc145264ac4b6b2b6b12f",
     "url": "/vue-components/index.html"
-  },
-  {
-    "revision": "71603a1b3853ddb516b35d4f17ea12f7",
-    "url": "/vue-components/img/dengken.jpg"
   },
   {
     "revision": "3af34619f31acf54021c1f9edd912b03",
     "url": "/vue-components/img/html5.png"
+  },
+  {
+    "revision": "71603a1b3853ddb516b35d4f17ea12f7",
+    "url": "/vue-components/img/dengken.jpg"
   },
   {
     "revision": "9379f50040087f12bcd5aa5b7d10bb49",
@@ -368,12 +368,12 @@ self.__precacheManifest = [
     "url": "/vue-components/img/logo.png"
   },
   {
-    "revision": "8c7380a5600b304f3424fa8971187ba3",
-    "url": "/vue-components/js/jweixin-1.2.0.js"
-  },
-  {
     "revision": "a17a1e8624e9781e71f24dfd393020fd",
     "url": "/vue-components/img/imageConversion.png"
+  },
+  {
+    "revision": "8c7380a5600b304f3424fa8971187ba3",
+    "url": "/vue-components/js/jweixin-1.2.0.js"
   },
   {
     "revision": "35f627f6c7f15fdd722626f981759156",
@@ -384,7 +384,7 @@ self.__precacheManifest = [
     "url": "/vue-components/js/qrcode.js"
   },
   {
-    "revision": "f76c9153fe3b5796de5b",
+    "revision": "daf72d9c08798482634b",
     "url": "/vue-components/css/app.621d35a9.css"
   }
 ];
