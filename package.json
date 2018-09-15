@@ -8,10 +8,10 @@
   "private": false,
   "scripts": {
     "dev": "vue-cli-service serve apps/main.js",
-    "build": "vue-cli-service build --target lib --name tommy-ui src/main.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit -t 4000",
     "test:e2e": "vue-cli-service test:e2e",
+    "publish": "vue-cli-service build --target lib --name tommy-ui src/main.js && npm publish",
     "deploy": "vue-cli-service build apps/main.js && gh-pages -d dist"
   },
   "dependencies": {
