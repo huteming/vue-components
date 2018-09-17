@@ -5,10 +5,10 @@
             <router-link class="nav-spacing-1" :to="{ path: '/docs/quickstart' }">Quickstart</router-link>
         </li>
 
-        <li class="nav-item-container">
-            <div class="nav-item-title nav-spacing-1">Components</div>
+        <li class="nav-item-container" v-for="(nav, type) in navs" :key="type">
+            <div class="nav-item-title nav-spacing-1">{{ type }}</div>
 
-            <ul class="nav" v-for="group in navs" :key="group.title">
+            <ul class="nav" v-for="group in nav" :key="group.title">
                 <li class="nav-item-container">
                     <div class="nav-item-subtitle nav-spacing-2">{{ group.title }}</div>
 
@@ -28,12 +28,16 @@
 </template>
 
 <script>
-import configNavs from 'apps/config-doc-nav.json'
+import configComponent from 'apps/config-component.json'
+import configUtil from 'apps/config-util.json'
 
 export default {
     data () {
         return {
-            navs: configNavs
+            navs: {
+                Utils: configUtil,
+                Components: configComponent
+            }
         }
     },
 

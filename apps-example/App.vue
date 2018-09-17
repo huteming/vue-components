@@ -62,6 +62,7 @@ export default {
 // 滚动条整体部分
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
 // 滚动条两端的按钮

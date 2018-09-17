@@ -17,7 +17,7 @@
         @after-leave="afterLeave">
         <div class="accordion-container" v-show="open">
             <router-link class="accordion-list" tag="div" v-for="item in list" :key="item.name" :to="`/example/${item.name}`">
-                <div class="accordion-list-title">{{ item.desc }}</div>
+                <div class="accordion-list-title">{{ item.english }} {{ item.chinese }}</div>
 
                 <div class="accordion-list-arrow">
                     <BaseIcon icon="arrow-right" size="14px" color="#d2d2d6" />

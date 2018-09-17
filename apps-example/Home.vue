@@ -13,13 +13,14 @@
 </template>
 
 <script>
-import configNavs from 'apps/config-doc-nav.json'
+import configComponent from 'apps/config-component.json'
+import configUtil from 'apps/config-util.json'
 import AppAccordion from './components/accordion'
 
 export default {
     data () {
         return {
-            navs: configNavs
+            navs: [...configComponent, ...configUtil]
         }
     },
 

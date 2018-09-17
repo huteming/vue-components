@@ -45,10 +45,16 @@ body, html {
     height: 100%;
     font-size: 14px;
     line-height: 26px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 html {
     font-size: calc(100vw / 7.5);
+}
+
+a {
+    text-decoration: none;
 }
 
 .page-group {

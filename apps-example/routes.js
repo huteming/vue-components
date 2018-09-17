@@ -1,4 +1,5 @@
-import configNavs from 'apps/config-doc-nav.json'
+import configComponent from 'apps/config-component.json'
+import configUtil from 'apps/config-util.json'
 
 let routes = [
     {
@@ -9,7 +10,7 @@ let routes = [
     }
 ]
 
-configNavs.forEach(nav => {
+void [...configComponent, ...configUtil].forEach(nav => {
     nav.list.forEach(page => {
         routes.push({
             path: page.name,

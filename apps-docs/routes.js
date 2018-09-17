@@ -1,8 +1,5 @@
-import 'sushi-ui'
-import 'highlight.js/styles/github-gist.css'
-import './assets/style/md.scss'
-import 'element-ui/lib/theme-chalk/index.css'
-import configNavs from 'apps/config-doc-nav.json'
+import configComponent from 'apps/config-component.json'
+import configUtil from 'apps/config-util.json'
 
 let routes = [
     {
@@ -13,7 +10,7 @@ let routes = [
     }
 ]
 
-configNavs.forEach(nav => {
+void [...configComponent, ...configUtil].forEach(nav => {
     nav.list.forEach(page => {
         routes.push({
             path: page.name,
