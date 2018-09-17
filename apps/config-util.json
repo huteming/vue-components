@@ -6,7 +6,12 @@
                 "name": "canvas",
                 "english": "Canvas",
                 "chinese": "画布"
-            },
+            }
+        ]
+    },
+    {
+        "title": "other",
+        "list": [
             {
                 "name": "tool",
                 "english": "Tool",
