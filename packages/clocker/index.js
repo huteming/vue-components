@@ -1,8 +1,6 @@
-import './src/clocker.scss'
-import Vue from 'vue'
 import Component from './src/clocker.vue'
 
-Component.install = function () {
+Component.install = function (Vue) {
     Vue.component(Component.name, Component)
 }
 

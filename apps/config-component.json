@@ -96,6 +96,11 @@
                 "name": "card",
                 "english": "Card",
                 "chinese": "卡片"
+            },
+            {
+                "name": "clocker",
+                "english": "Clocker",
+                "chinese": "倒计时"
             }
         ]
     },
