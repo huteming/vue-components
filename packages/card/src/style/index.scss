@@ -1,0 +1,58 @@
+.t-card {
+    border-radius: 6px;
+    border: 1px solid #ebeef5;
+    background-color: #fff;
+    box-shadow: 4px 4px 30px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: .3s;
+
+    &-header {
+        position: relative;
+        padding: vw(28) vw(30) vw(20);
+        font-size: 13px;
+        line-height: 1;
+        color: #999;
+        box-sizing: border-box;
+
+        &:after {
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: vw(30);
+            right: 0;
+            height: 1px;
+            background: #E5E5E5;
+            transform-origin: 0 100%;
+            transform: scaleY(0.5);
+        }
+    }
+
+    &-content {
+        padding: vw(30);
+        color: #000;
+        font-size: 14px;
+    }
+
+    &-footer {
+        position: relative;
+        padding: vw(20) vw(30) vw(16);
+        color: #586C94;
+        font-size: 14px;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            top: 0;
+            left: vw(30);
+            right: 0;
+            height: 1px;
+            background: #E5E5E5;
+            transform-origin: 0 100%;
+            transform: scaleY(0.5);
+        }
+    }
+
+    & + & {
+        margin-top: vw(60);
+    }
+}

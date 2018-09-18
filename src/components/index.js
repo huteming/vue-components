@@ -21,6 +21,7 @@ export { default as Range } from 'packages/range'
 export { default as Carousel } from 'packages/carousel'
 export { default as CarouselItem } from 'packages/carousel-item'
 export { default as Cell } from 'packages/cell'
+export { default as Card } from 'packages/card'
 
 export { default as Actionsheet } from 'packages/actionsheet'
 export { default as Toast } from 'packages/toast'

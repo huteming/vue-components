@@ -25,9 +25,10 @@ export default {
 
 <style lang="scss" scoped>
 .phone {
-    width: 365px;
+    width: 405px;
     height: 100%;
-    padding: 100px 16px;
+    margin-left: 20px;
+    padding: 100px 15px;
     background-image: url('../assets/images/phone.png');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -35,7 +36,7 @@ export default {
 
     &-page {
         width: 100%;
-        height: 580px;
+        height: 667px;
         background-color: #fff;
     }
 }

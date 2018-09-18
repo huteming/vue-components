@@ -91,6 +91,11 @@
                 "name": "cell",
                 "english": "Cell",
                 "chinese": "单元格"
+            },
+            {
+                "name": "card",
+                "english": "Card",
+                "chinese": "卡片"
             }
         ]
     },

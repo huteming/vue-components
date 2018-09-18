@@ -1,1 +1,3 @@
-export * from './src/canvas.js'
+import Canvas from './src/canvas.js'
+
+export default Canvas

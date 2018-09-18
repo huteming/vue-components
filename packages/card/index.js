@@ -1,8 +1,6 @@
-import './src/card.scss'
-import Vue from 'vue'
 import Component from './src/card.vue'
 
-Component.install = function () {
+Component.install = function (Vue) {
     Vue.component(Component.name, Component)
 }
 

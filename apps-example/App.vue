@@ -53,6 +53,7 @@ export default {
 .page-example {
     min-height: 100%;
     background: #f5f5f9;
+    box-sizing: border-box;
 
     &-home {
         padding: 27px 16px;

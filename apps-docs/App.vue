@@ -110,7 +110,7 @@ export default {
     }
 
     &-phone {
-        flex: 0 0 405px;
+        flex: 0 0 550px;
         padding-top: 40px;
     }
 

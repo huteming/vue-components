@@ -4,7 +4,7 @@
  *
  * @argument {Number} designWidth 设计稿标准宽度
  */
-export class Canvas {
+export default class Canvas {
     constructor (width, height, { designWidth = 750 } = {}) {
         const { context, canvas, canvasWidth, canvasHeight, ratio } = getCanvasObject(width, height, designWidth)
 

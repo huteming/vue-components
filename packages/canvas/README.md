@@ -19,31 +19,20 @@ instance.use(({ context, canvas, ratio, width, height }) => {
 const src = instance.done()
 ```
 
-## API
-
-Canvas 构造函数参数
+## Canvas 构造函数参数
 
 | name | 描述 | 默认参数 |
 |------|--------|-------|
 | width | 设计稿上画布宽度 | |
 | height | 设计稿上画布高度 | |
-| options | 配置 | |
-
-options
-
-| name | 描述 | 默认参数 |
-|------|--------|-------|
-| designWidth | 设计稿标准总宽度 | `750` |
+| optionsCanvas | 配置 | |
 
 ## 实例方法
 
 | name | 描述 | 参数 |
 |------|--------|-------|
-| use | 执行callback前后分别执行 save, restore 方法 | Callback |
-| callback | canvas画图方法 | Object{<br>context<br>canvas<br>ratio<br>width<br>height<br>} |
+| use | 执行callback前后分别执行 save, restore 方法 | callbackDraw |
 | done | 导出图片 | |
-
-## 辅助方法
 
 | name | 描述 | 参数 |
 |------|--------|-------|
@@ -51,7 +40,19 @@ options
 | drawRect | 矩形 | x, y, width, height, optionsRect |
 | drawText | 文本 | text, x, y, optionsText |
 | drawLine | 直线 | startX, startY, endX, endY, optionsLine |
-| drawImage | image, x, y, width, height |
+| drawImage | 图片 | image, x, y, width, height |
+
+### optionsCanvas
+
+| name | 描述 | 默认值 |
+|------|--------|-------|
+| designWidth | 设计稿标准总宽度 | `750` |
+
+### callbackDraw
+
+| name | 描述 | 参数 |
+|------|--------|-------|
+| | canvas画图方法 | { context, canvas, ratio, width, height } |
 
 ### optionsArc
 
@@ -79,7 +80,7 @@ options
 |-------|----------|---------|
 | prefix | 前缀 | |
 | suffix | 后缀 | |
-| fix | 过长省略时添加字符串 | `.... ` |
+| fix | 过长省略时添加字符串 | `'.... '` |
 | maxWidth | 最长宽度，会在末尾加上 fix 字符串，一般搭配前缀 后缀使用 | `0` |
 | style | 字体的风格 normal, italic, oblique | `normal` |
 | variant | 字体变体 normal, small-caps | `normal` |

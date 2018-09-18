@@ -1,75 +1,110 @@
-.content h1, .content h2, .content h3 {
-    color: #444;
-    font-size: 1.2em;
-    margin: 1.5em 0 1.2em;
-}
-.content h1 {
-    font-size: 2em;
-}
-.content h3 {
-    font-size: 1em;
-}
-.content p {
-    line-height: 22.4px;
-}
-.content ul {
-    list-style-type: disc;
-    margin: 10px 0;
-}
-.content ul li {
-    margin-left: 30px;
-    line-height: 22.4px;
-}
-.content hr {
-    border: 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-.content pre {
-    background-color: #f8f8f8;
-    padding: 20px;
-    margin: 1.2em 0;
-    overflow: auto;
-}
-.content p > code {
-    background-color: #eee;
-    padding: 2px;
-    color: #26a2ff;
-}
-.content blockquote {
-    margin-bottom: 20px;
-}
-.content a {
-    color: #4078c0;
-    text-decoration: none;
-}
-.content ::-webkit-scrollbar {
-    /*width: 0;*/
-}
-.content .table {
-    margin-bottom: 16px;
-}
-.content table th:nth-child(3),
-.content table th:nth-child(5) {
-    width: 65px;
-}
-.content table th:nth-child(4) {
-    width: 110px;
-}
-.content table th:nth-child(1) {
-    width: 160px;
+.content {
+    h1 {
+        margin-top: 8Px;
+        margin-bottom: 24Px;
+        color: #404040;
+        font-weight: bold;
+        line-height: 40Px;
+        font-size: 28px;
+    }
+
+    h2, h3, h4, h5, h6 {
+        color: #404040;
+        margin: 1.6em 0 0.6em;
+        font-weight: 500;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    p {
+        line-height: 22.4px;
+
+        > code {
+            background-color: #eee;
+            padding: 2px;
+            color: #26a2ff;
+        }
+    }
+
+    ul {
+        list-style-type: disc;
+        margin: 10px 0;
+
+        li {
+            margin-left: 30px;
+            line-height: 22.4px;
+        }
+    }
+
+    hr {
+        border: 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    pre {
+        background-color: #f8f8f8;
+        padding: 20px;
+        margin: 1.2em 0;
+        overflow: auto;
+    }
+
+    blockquote {
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: #4078c0;
+        text-decoration: none;
+    }
+
+    .table {
+        margin-bottom: 16px;
+
+        // 名称
+        th:nth-child(1) {
+            width: 160px;
+        }
+
+        // th:nth-child(3),
+        // th:nth-child(5) {
+        //     width: 65px;
+        // }
+
+        // 可选值
+        th:nth-child(4) {
+            width: 110px;
+        }
+
+        // 默认值
+        th:nth-child(5) {
+            width: 80px;
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
-    .content .table-container {
-        overflow-x: scroll;
-    }
-    .content .table {
-        width: auto;
-        min-width: 100%;
-        table-layout: auto;
-    }
-    .content .table-container .table th {
-        width: auto;
-        min-width: 100px;
+    .content {
+        .table-container {
+            overflow-x: scroll;
+
+            .table {
+                th {
+                    width: auto;
+                    min-width: 100px;
+                }
+            }
+        }
+
+        .table {
+            width: auto;
+            min-width: 100%;
+            table-layout: auto;
+        }
     }
 }
