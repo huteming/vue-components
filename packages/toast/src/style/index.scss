@@ -1,7 +1,7 @@
 .t-toast {
     position: fixed;
-    max-width: 4.5rem;
-    padding: .15rem .3rem;
+    max-width: vw(450);
+    padding: vw(15) vw(30);
     color: #fff;
     text-align: center;
     background: rgba(0, 0, 0, 0.8);
@@ -10,7 +10,7 @@
     z-index: 12;
 
     &-header {
-        padding: .15rem 0;
+        padding: vw(15) 0;
         line-height: 1;
     }
 

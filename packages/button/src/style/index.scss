@@ -1,17 +1,17 @@
 .t-button {
     display: block;
+    padding: 0 vw(30);
     white-space: nowrap;
     text-align: center;
     outline: none;
     font-weight: 500;
-    line-height: 1;
     letter-spacing: 0.21px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
 
     &-icon {
-        margin-right: .18rem;
+        margin-right: vw(18);
     }
 
     // 主题状态
@@ -52,20 +52,22 @@
 
     // 尺寸
     &-normal {
-        padding: .29rem .4rem;
+        height: vw(95);
+        line-height: vw(95);
         font-size: 18px;
     }
 
     &-small {
-        padding: .18rem .3rem;
-        font-size: 14px;
+        height: vw(60);
+        line-height: vw(60);
+        font-size: 13px;
     }
 
     &-block {
         display: block;
 
         & + & {
-            margin-top: .2rem;
+            margin-top: vw(30);
         }
     }
 
@@ -73,7 +75,7 @@
         display: inline-block;
 
         & + & {
-            margin-left: .12rem;
+            margin-left: vw(30);
         }
     }
 

@@ -1,6 +1,6 @@
 .t-checkbox {
     &-header {
-        padding: .42rem 0 .18rem .3rem;
+        padding: vw(42) 0 vw(18) vw(30);
         font-size: 14px;
         line-height: 1;
         color: #888;
@@ -18,12 +18,12 @@
         position: relative;
         display: flex;
         align-items: center;
-        padding: .23rem .3rem;
+        padding: vw(23) vw(30);
         letter-spacing: 0.21px;
         background: #fff;
     
         &-icon {
-            width: .6rem;
+            width: vw(60);
             line-height: 1;
         }
     

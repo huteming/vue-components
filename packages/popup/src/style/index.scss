@@ -7,7 +7,7 @@
     &-middle {
         left: 50%;
         transform: translate(-50%, 10px);
-        width: 4rem;
+        width: vw(400);
         padding: 10px;
         border-radius: 8px;
 
@@ -29,7 +29,7 @@
         top: 0;
         left: 0;
         right: 0;
-        padding: .15rem;
+        padding: vw(15);
         font-size: 14px;
         line-height: 1.8;
         color: #fff;
@@ -47,7 +47,7 @@
         top: 0;
         bottom: 0;
         left: 0;
-        width: 6rem;
+        width: vw(600);
     }
 
     &-right {

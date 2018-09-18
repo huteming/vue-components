@@ -4,7 +4,7 @@
 
 ## 例子
 
-Canvas 为原型对象。主要是解决了 canvas 在不同分辨率中显示可能模糊的问题。
+Canvas 为构造函数。主要是解决了 canvas 在不同分辨率中显示可能模糊的问题。
 
 ```javascript
 import { utils } from 'tommy-ui'
@@ -15,9 +15,27 @@ const instance = new Canvas(480, 854)
 instance.use(({ context, canvas, ratio, width, height }) => {
     instance.drawText('我在静好书院读书', 24, 93)
 })
+
+const src = instance.done()
 ```
 
 ## API
+
+Canvas 构造函数参数
+
+| name | 描述 | 默认参数 |
+|------|--------|-------|
+| width | 设计稿上画布宽度 | |
+| height | 设计稿上画布高度 | |
+| options | 配置 | |
+
+options
+
+| name | 描述 | 默认参数 |
+|------|--------|-------|
+| designWidth | 设计稿标准总宽度 | `750` |
+
+## 实例方法
 
 | name | 描述 | 参数 |
 |------|--------|-------|

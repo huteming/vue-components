@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 5.4rem;
+    width: vw(540);
     color: #000;
     text-align: center;
     letter-spacing: .5px;
@@ -13,7 +13,7 @@
     z-index: 12;
 
     &-container {
-        padding: .42rem .42rem .3rem;
+        padding: vw(42) vw(42) vw(30);
     }
 
     &-title {
@@ -34,7 +34,7 @@
 
         input {
             width: 100%;
-            padding: .22rem .24rem;
+            padding: vw(22) vw(24);
             color: #bbb;
             font-size: 14px;
             line-height: 14px;
@@ -55,15 +55,15 @@
     }
 
     &-title + &-subtitle {
-        margin-top: .18rem;
+        margin-top: vw(18);
     }
 
     &-title + &-field {
-        margin-top: .18rem;
+        margin-top: vw(18);
     }
 
     &-subtitle + &-field {
-        margin-top: .18rem;
+        margin-top: vw(18);
     }
 
     &-footer {
@@ -73,7 +73,7 @@
 
         &-btn {
             flex: 1;
-            padding: .32rem 0;
+            padding: vw(32) 0;
             font-size: 18px;
             line-height: 1;
 

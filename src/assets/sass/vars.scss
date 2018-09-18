@@ -3,3 +3,15 @@ $color-danger: #f56c6c;
 $color-success: #67c23a;
 $color-warning: #e6a23c;
 $color-info: #909399;
+
+// 水平间距
+$h-spacing-sm: vw(10);
+$h-spacing-md: vw(16);
+$h-spacing-lg: vw(30);
+
+// 垂直间距
+$v-spacing-xs: vw(6);
+$v-spacing-sm: vw(12);
+$v-spacing-md: vw(18);
+$v-spacing-lg: vw(30);
+$v-spacing-xl: vw(42);
