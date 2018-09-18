@@ -23,6 +23,7 @@ export { default as CarouselItem } from 'packages/carousel-item'
 export { default as Cell } from 'packages/cell'
 export { default as Card } from 'packages/card'
 export { default as Clocker } from 'packages/clocker'
+export { default as Divider } from 'packages/divider'
 
 export { default as Actionsheet } from 'packages/actionsheet'
 export { default as Toast } from 'packages/toast'
@@ -35,5 +36,4 @@ export { default as ImageLazyload } from 'packages/image-lazyload'
 export { default as InfiniteScroll } from 'packages/infinite-scroll'
 
 // 未录入
-export { default as Divider } from 'packages/divider'
 export { default as Icon } from 'packages/icon'

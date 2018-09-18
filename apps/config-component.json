@@ -101,6 +101,11 @@
                 "name": "clocker",
                 "english": "Clocker",
                 "chinese": "倒计时"
+            },
+            {
+                "name": "divider",
+                "english": "Divider",
+                "chinese": "分隔线"
             }
         ]
     },

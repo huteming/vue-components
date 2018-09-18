@@ -1,5 +1,5 @@
 <template>
-<div class="t-divider">
+<section class="t-divider">
     <div class="t-divider-line"></div>
 
     <div class="t-divider-tips">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="t-divider-line"></div>
-</div>
+</section>
 </template>
 
 <script>
