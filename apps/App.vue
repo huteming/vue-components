@@ -34,7 +34,7 @@ export default {
 
     mounted () {
         this.$tools.wx.saveURL(location.href)
-    }
+    },
 }
 </script>
 
