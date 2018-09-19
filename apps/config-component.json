@@ -63,6 +63,11 @@
                 "chinese": "日期选择"
             },
             {
+                "name": "picker-address",
+                "english": "PickerAddress",
+                "chinese": "地址选择"
+            },
+            {
                 "name": "radio",
                 "english": "Radio",
                 "chinese": "单选框"

@@ -1,8 +1,6 @@
-import './src/picker-address.scss'
-import Vue from 'vue'
 import Component from './src/picker-address.vue'
 
-Component.install = function () {
+Component.install = function (Vue) {
     Vue.component(Component.name, Component)
 }
 

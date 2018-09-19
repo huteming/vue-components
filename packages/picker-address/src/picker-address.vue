@@ -1,6 +1,6 @@
 <template>
 <section class="t-pickeraddress">
-    <base-popup :visible.sync="normalizedVisible">
+    <base-popup v-model="normalizedVisible" position="bottom">
         <div class="t-pickeraddress-toolbar">
             <div class="t-pickeraddress-toolbar__action" @click="handleCancel">取消</div>
             <div class="t-pickeraddress-toolbar__action" @click="handleConfirm">确定</div>
@@ -20,9 +20,9 @@ import BasePopup from '../../popup'
 import BasePicker from '../../picker'
 import BasePickerItem from '../../picker-item'
 
-import provinceOptions from '../provinces.json'
-import citieOptions from '../cities.json'
-import areaOptions from '../areas.json'
+import provinceOptions from './data/provinces.json'
+import citieOptions from './data/cities.json'
+import areaOptions from './data/areas.json'
 
 export default {
     name: 'BasePickerAddress',
@@ -107,8 +107,11 @@ export default {
 
             this.$emit('input', data)
             this.$emit('update:valueText', dataText)
-            this.$emit('change', data, dataText)
             this.normalizedVisible = false
+
+            this.$nextTick(() => {
+                this.$emit('change', data, dataText)
+            })
         },
         handleCancel () {
             this.normalizedVisible = false
