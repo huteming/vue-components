@@ -29,6 +29,7 @@ export { default as Divider } from 'packages/divider'
 export { default as Actionsheet } from 'packages/actionsheet'
 export { default as Toast } from 'packages/toast'
 export { default as Message } from 'packages/message'
+export { default as Dialog } from 'packages/dialog'
 export { default as Progress } from 'packages/progress'
 
 export { default as Loadmore } from 'packages/loadmore'

@@ -133,6 +133,11 @@
                 "chinese": "对话框"
             },
             {
+                "name": "dialog",
+                "english": "Dialog",
+                "chinese": "弹窗提示"
+            },
+            {
                 "name": "progress",
                 "english": "Progress",
                 "chinese": "进度条"

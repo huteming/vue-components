@@ -1,16 +1,18 @@
 <template>
-<app-view-box title="dialog demo">
-    <base-button @click="visibleDialog = true" block>open</base-button>
+<div class="page-example">
+    <base-button @click="visibleDialog = true">open</base-button>
 
-    <base-dialog :visible.sync="visibleDialog" close-position="bottom" @open="handleOpen" @closed="handleClose">
+    <base-dialog v-model="visibleDialog" close-position="bottom" :before-close="handleBeforeClose" @closed="handleClosed">
         <img src="~/apps-example/assets/images/dengken.jpg" alt="" class="image" />
 
         <base-button slot="footer" type="primary" @click="visibleDialog = false">确认</base-button>
     </base-dialog>
-</app-view-box>
+</div>
 </template>
 
 <script>
+import { Button as BaseButton, Dialog as BaseDialog, Toast } from 'tommy-ui'
+
 export default {
     data () {
         return {
@@ -20,15 +22,23 @@ export default {
 
     methods: {
         handleOpen () {
-            this.$toast('open')
+            Toast('open')
         },
         handleClose () {
-            this.$toast('close')
+            Toast('close')
+        },
+        handleClosed () {
+            Toast('closed')
         },
         handleBeforeClose (done) {
-            this.$toast('waiting')
+            Toast('close 2s later')
             setTimeout(done, 2000)
         }
+    },
+
+    components: {
+        BaseButton,
+        BaseDialog
     }
 }
 </script>

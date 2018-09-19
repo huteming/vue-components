@@ -24,7 +24,7 @@ export default {
     name: 'BaseDialog',
 
     props: {
-        visible: Boolean,
+        value: Boolean,
         beforeClose: Function,
         /**
          * 可选值 out-right, out-left, in-right, in-left, bottom
@@ -50,11 +50,11 @@ export default {
     },
 
     watch: {
-        visible (val) {
+        value (val) {
             val ? (this.show()) : (this.hide())
         },
         currentVisible (val) {
-            this.$emit('update:visible', val)
+            this.$emit('input', val)
         }
     },
 
@@ -101,7 +101,7 @@ export default {
     },
 
     mounted () {
-        if (this.visible) {
+        if (this.value) {
             this.show()
         }
     },

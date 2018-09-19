@@ -1,4 +1,4 @@
-# config-doc-nav 参数说明
+# config 参数说明
 
 ## title
 
