@@ -111,6 +111,11 @@
                 "name": "divider",
                 "english": "Divider",
                 "chinese": "分隔线"
+            },
+            {
+                "name": "icon",
+                "english": "Icon",
+                "chinese": "图标"
             }
         ]
     },

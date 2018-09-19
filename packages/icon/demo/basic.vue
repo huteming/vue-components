@@ -1,38 +1,48 @@
 <template>
-<app-view-box title="icon demo">
+<div class="page-example">
     <div class="content">
         <div class="icon-group">
-            <base-icon icon="error-reverse" color="pink"></base-icon>
-            <div>error-reverse</div>
+            <base-icon icon="success"></base-icon>
+            <div>success</div>
         </div>
 
         <div class="icon-group">
-            <base-icon icon="actionsheet" color="blue"></base-icon>
+            <base-icon icon="actionsheet"></base-icon>
             <div>actionsheet</div>
         </div>
 
         <div class="icon-group">
-            <base-icon icon="calendar" color="purple"></base-icon>
+            <base-icon icon="calendar"></base-icon>
             <div>calendar</div>
         </div>
 
         <div class="icon-group">
-            <base-icon icon="infinite" size="20px"></base-icon>
+            <base-icon icon="infinite"></base-icon>
             <div>infinite</div>
         </div>
 
         <div class="icon-group">
-            <base-icon icon="message" size="25px"></base-icon>
+            <base-icon icon="message"></base-icon>
             <div>message</div>
         </div>
 
         <div class="icon-group">
-            <base-icon icon="card" size="30px"></base-icon>
+            <base-icon icon="card"></base-icon>
             <div>card</div>
         </div>
     </div>
-</app-view-box>
+</div>
 </template>
+
+<script>
+import { Icon as BaseIcon } from 'tommy-ui'
+
+export default {
+    components: {
+        BaseIcon
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .content {
