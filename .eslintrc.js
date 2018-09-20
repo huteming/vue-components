@@ -14,7 +14,7 @@ module.exports = {
         // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'indent': ['error', 4],
-        'comma-dangle': ['error', {
+        'comma-dangle': ['off', {
             'arrays': 'always-multiline',
             'objects': 'always-multiline',
             'imports': 'never',

@@ -1,0 +1,50 @@
+.t-tab {
+    width: 100%;
+    overflow: hidden;
+
+    &-navbar {
+        display: flex;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #303030;
+        background-color: #fff;
+    }
+
+    &-pane {
+        position: relative;
+        padding: vw(25) 0 vw(20);
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column nowrap;
+        line-height: 1.4;
+
+        &-active {
+            color: #108EE9;
+            transition: color .2s;
+        }
+
+        &-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #108EE9;
+        }
+    }
+
+    &-content {
+        display: flex;
+    }
+
+    &-container {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    &-transition {
+        transition: transform 300ms ease-in-out;
+    }
+}

@@ -33,6 +33,11 @@
                 "chinese": "导航栏"
             },
             {
+                "name": "tab",
+                "english": "Tab",
+                "chinese": "选项卡"
+            },
+            {
                 "name": "popup",
                 "english": "Popup",
                 "chinese": "弹出框"

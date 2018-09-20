@@ -2,6 +2,22 @@ $transition-duration: .3s;
 $transition-function: cubic-bezier(.55, 0, .1, 1);
 $transition: all $transition-duration $transition-function;
 
+.spread-center-enter-active,
+.spread-center-leave-active {
+    transition: transform 0.3s $transition-function;
+    transform-origin: center;
+}
+
+.spread-center-enter,
+.spread-center-leave-to {
+    transform: scale3d(0, 1, 1);
+}
+
+.spread-center-enter-to,
+.spread-center-leave {
+    transform: scale3d(1, 1, 1);
+}
+
 .popup-fade-enter,
 .popup-fade-leave-active {
     opacity: 0;

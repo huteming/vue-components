@@ -1,8 +1,6 @@
-import './src/tab.scss'
-import Vue from 'vue'
 import Component from './src/tab.vue'
 
-Component.install = function () {
+Component.install = function (Vue) {
     Vue.component(Component.name, Component)
 }
 

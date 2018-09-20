@@ -5,6 +5,9 @@ export { default as WhiteSpace } from 'packages/white-space'
 export { default as Viewbox } from 'packages/viewbox'
 
 export { default as Navbar } from 'packages/navbar'
+export { default as Tab } from 'packages/tab'
+export { default as TabPane } from 'packages/tab-pane'
+export { default as TabContainer } from 'packages/tab-container'
 export { default as Popup } from 'packages/popup'
 
 export { default as Button } from 'packages/button'
