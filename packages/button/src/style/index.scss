@@ -3,8 +3,8 @@
 .t-button {
     @include button-base;
 
-    &-icon {
-        margin-right: 8px;
+    &-icon + &-text {
+        margin-left: 8px;
     }
 
     &-size {

@@ -4,7 +4,7 @@
         <slot name="left"></slot>
     </div>
 
-    <div class="t-navbar-title">
+    <div class="t-navbar-center">
         <slot>{{ title }}</slot>
     </div>
 

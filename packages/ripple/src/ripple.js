@@ -1,7 +1,7 @@
 const CTX = '@@Ripple'
 const defaults = {
-    duration: 500,
-    color: 'rgba(255, 255, 255, 0.3)',
+    duration: 400,
+    color: 'rgba(255, 255, 255, 0.4)',
     disabled: false,
 }
 
@@ -103,7 +103,9 @@ function show (event) {
 function createElement (event) {
     const self = this
 
-    if (getComputedStyle(this.el).position === 'static') {
+    const { position, overflow } = getComputedStyle(this.el)
+
+    if (position === 'static' || overflow !== 'hidden') {
         this.el.classList.add('t-ripple-position')
     }
 

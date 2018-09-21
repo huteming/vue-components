@@ -1,8 +1,12 @@
 <template>
-<section class="t-button" :class="classes" :style="styles" :disabled="normalizedDisabled" @click="handleClick" v-ripple data-ripple-disabled="normalizedDisabled">
+<section class="t-button" :class="classes" :style="styles"
+    :disabled="normalizedDisabled"
+    @click="handleClick"
+    v-ripple="{ color: rippleColor }"
+    data-ripple-disabled="normalizedDisabled">
     <i class="t-button-icon iconfont" :class="`icon-${normalizedIcon}`" v-if="normalizedIcon"></i>
 
-    <span v-if="$slots.default"> <slot></slot> </span>
+    <span class="t-button-text" v-if="$slots.default"> <slot></slot> </span>
 </section>
 </template>
 
@@ -80,6 +84,13 @@ export default {
             }
 
             return styles
+        },
+        rippleColor () {
+            if (this.fill) {
+                return 'rgba(255, 255, 255, 0.4)'
+            }
+
+            return 'rgba(0, 0, 0, .1)'
         },
         normalizedIcon () {
             if (this.loading) {
