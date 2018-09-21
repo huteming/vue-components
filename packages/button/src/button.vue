@@ -1,40 +1,45 @@
 <template>
-<section class="t-button"
-    :class="classes"
-    :disabled="normalizedDisabled"
-    @click="handleClick">
-    <base-icon class="t-button-icon" :icon="normalizedIcon" v-if="normalizedIcon"></base-icon>
+<section class="t-button" :class="classes" :style="styles" :disabled="normalizedDisabled" @click="handleClick" v-ripple data-ripple-disabled="normalizedDisabled">
+    <i class="t-button-icon iconfont" :class="`icon-${normalizedIcon}`" v-if="normalizedIcon"></i>
+
     <span v-if="$slots.default"> <slot></slot> </span>
 </section>
 </template>
 
 <script>
+import Ripple from 'packages/ripple'
 import BaseIcon from '../../icon'
 
 export default {
     name: 'BaseButton',
 
     props: {
-        /**
-         * 可选值。default, primary, danger
-         */
-        type: {
+        icon: {
             type: String,
-            default: 'default',
-            validator (val) {
-                return ['default', 'primary', 'danger'].indexOf(val) > -1
-            }
-        },
-        plain: {
-            type: Boolean,
-            default: false
+            default: ''
         },
         size: {
             type: String,
             default: 'normal',
             validator (val) {
-                return ['normal', 'small'].indexOf(val) > -1
+                return ['small', 'normal', 'large'].indexOf(val) > -1
             }
+        },
+        raised: {
+            type: Boolean,
+            default: false,
+        },
+        fill: {
+            type: [Boolean, String],
+            default: false,
+        },
+        outline: {
+            type: String,
+            default: '',
+        },
+        inline: {
+            type: Boolean,
+            default: false,
         },
 
         loading: {
@@ -45,30 +50,36 @@ export default {
             type: Boolean,
             default: false
         },
-        inline: {
-            type: Boolean,
-            default: false
-        },
+    },
 
-        icon: {
-            type: String,
-            default: ''
+    data () {
+        return {
         }
     },
 
     computed: {
         classes () {
-            const clsType = `t-button-${this.type}`
-            const clsPlain = this.plain ? `${clsType}-plain` : clsType
-
-            const suffixBlock = this.inline ? 'inline' : 'block'
-
             return {
-                't-button-disabled': this.normalizedDisabled,
-                [`t-button-${this.size}`]: true,
-                [`t-button-${suffixBlock}`]: true,
-                [`${clsPlain}`]: true
+                [`t-button-disabled`]: this.normalizedDisabled,
+                [`t-button-raised`]: this.raised,
+                [`t-button-size-${this.size}`]: true,
+                [`t-button-inline`]: this.inline,
             }
+        },
+        styles () {
+            const styles = {}
+
+            if (this.fill) {
+                styles['background-color'] = (typeof this.fill === 'string') ? this.fill : '#7e848c'
+                styles['color'] = '#fff'
+            }
+
+            if (this.outline) {
+                styles['border'] = `2px solid ${this.outline}`
+                styles['color'] = this.outline
+            }
+
+            return styles
         },
         normalizedIcon () {
             if (this.loading) {
@@ -81,6 +92,9 @@ export default {
         }
     },
 
+    mounted () {
+    },
+
     methods: {
         handleClick () {
             this.$emit('click')
@@ -89,6 +103,10 @@ export default {
 
     components: {
         BaseIcon
-    }
+    },
+
+    directives: {
+        Ripple
+    },
 }
 </script>

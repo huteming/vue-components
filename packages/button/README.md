@@ -20,13 +20,14 @@ Vue.component(Button.name, Button)
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|-------|---------|-------|--------|
-| type | 按钮显示样式 | String | `default`<br>`primary`<br>`danger` | `default` |
-| size | 尺寸 | String | `small`<br>`normal` | `normal` |
-| plain | 幽灵按钮 | Boolean | | `false` |
+| icon | 图标 | String |  | |
+| size | 尺寸 | String | `small`, `normal`, `large` | `normal` |
+| raised | 阴影 | Boolean | | `false` |
+| fill | 填充背景。为 true 时，默认填充 #7e848c | Boolean, String | | `false` |
+| outline | 填充字体和边框 | String | | |
+| inline | 显示为行内元素 | Boolean | | `false` |
 | disabled | 禁用状态 | Boolean | | `false` |
 | loading | 加载中 | Boolean | | `false` |
-| inline | 显示为行内元素 | Boolean | | `false` |
-| icon | 图标 | String |  | |
 
 ## Slot
 

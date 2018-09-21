@@ -1,41 +1,148 @@
 <template>
-<div class="page">
-    <base-divider>主题</base-divider>
-    <base-button>default</base-button>
-    <base-button type="primary">primary</base-button>
-    <base-button type="danger">danger</base-button>
+<div class="page-example">
+    <!-- basic -->
+    <template>
+        <base-divider>basic Buttons</base-divider>
 
-    <base-divider>朴素元素 plain</base-divider>
-    <base-button plain>default</base-button>
-    <base-button type="primary" plain>primary</base-button>
-    <base-button type="danger" plain>danger</base-button>
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button>Button</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
 
-    <base-divider>disabled</base-divider>
-    <base-button disabled>default</base-button>
-    <base-button type="primary" disabled>primary</base-button>
-    <base-button type="danger" disabled>danger</base-button>
+    <!-- icon -->
+    <template>
+        <base-divider>icon Buttons</base-divider>
 
-    <base-divider>size</base-divider>
-    <base-button size="small">small</base-button>
-    <base-button size="small" inline>inline</base-button>
-    <base-button size="small" inline>inline</base-button>
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button icon="success">Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button icon="success" fill="#4caf50">Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button icon="success" outline="#4caf50">Button</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
 
-    <base-divider>icon</base-divider>
-    <base-button icon="actionsheet">icon</base-button>
-    <base-button loading>loading</base-button>
-    <base-button loading></base-button>
+    <!-- size -->
+    <template>
+        <base-divider>Size Buttons</base-divider>
 
-    <base-divider>自定义</base-divider>
-    <base-button>
-        <base-icon icon="success"></base-icon>
-        自定义
-        <base-icon icon="error"></base-icon>
-    </base-button>
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button size="small" raised>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button raised>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button size="large" raised>Button</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
+
+    <!-- raised -->
+    <template>
+        <base-divider>Raised Buttons</base-divider>
+
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button raised>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button raised>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button raised>Button</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
+
+    <!-- fill raised -->
+    <template>
+        <base-divider>Raised Fill Buttons</base-divider>
+
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button raised fill>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button raised fill="#ff5252">Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button raised fill="#2196f3">Button</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
+
+    <!-- outline -->
+    <template>
+        <base-divider>Raised Outline Buttons</base-divider>
+
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button>Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button outline="#ff5252">Button</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button outline="#2196f3">Button</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
+
+    <base-divider>Color Buttons</base-divider>
+
+    <base-flex gutter="10px" style="margin-bottom: 20px;">
+        <base-flex-item>
+            <base-button raised fill>Button</base-button>
+        </base-flex-item>
+        <base-flex-item>
+            <base-button raised fill="#ff5252">Button</base-button>
+        </base-flex-item>
+        <base-flex-item>
+            <base-button raised fill="#2196f3">Button</base-button>
+        </base-flex-item>
+    </base-flex>
+
+    <base-flex gutter="10px">
+        <base-flex-item>
+            <base-button raised fill="#4caf50">Button</base-button>
+        </base-flex-item>
+        <base-flex-item>
+            <base-button raised fill="#ffc107">Button</base-button>
+        </base-flex-item>
+    </base-flex>
+
+    <base-divider>其他</base-divider>
+
+    <base-flex gutter="10px" style="margin-bottom: 20px;">
+        <base-flex-item :grow="0">
+            <base-button fill>inline</base-button>
+        </base-flex-item>
+        <base-flex-item :grow="0">
+            <base-button fill loading>loading</base-button>
+        </base-flex-item>
+        <base-flex-item :grow="0">
+            <base-button fill disabled>disabled</base-button>
+        </base-flex-item>
+    </base-flex>
 </div>
 </template>
 
 <script>
-import { Button as BaseButton, Divider as BaseDivider, Icon as BaseIcon } from 'tommy-ui'
+import { Button as BaseButton, Divider as BaseDivider, Icon as BaseIcon, Flex, FlexItem } from 'tommy-ui'
 
 export default {
     methods: {
@@ -45,12 +152,14 @@ export default {
         BaseButton,
         BaseDivider,
         BaseIcon,
+        BaseFlex: Flex,
+        BaseFlexItem: FlexItem,
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.page {
-    background: #f3f3f3;
+.page-example {
+    padding: 20px;
 }
 </style>

@@ -1,20 +1,27 @@
 const CTX = '@@Ripple'
 const defaults = {
-    duration: 750,
+    duration: 500,
     color: 'rgba(255, 255, 255, 0.3)',
+    disabled: false,
 }
 
 export default {
     name: 'Ripple',
 
-    bind (el, binding) {
+    bind (el, binding, vnode) {
         el[CTX] = {
             el,
-            options: Object.assign(defaults, binding.value)
+            vm: vnode.context,
+
+            options: Object.assign({}, defaults, binding.value),
         }
         const self = el[CTX]
-
         self.handler = show.bind(self)
+
+        const disabledExp = self.el.dataset.rippleDisabled
+        self.vm.$watch(disabledExp, value => {
+            self.options.disabled = value
+        }, { immediate: true })
 
         el.addEventListener('click', self.handler)
     },
@@ -27,6 +34,9 @@ export default {
 }
 
 function show (event) {
+    const { duration, color, disabled } = this.options
+    if (disabled) return
+
     const element = createElement.call(this, event)
 
     const offset = getOffset(this.el)
@@ -37,7 +47,6 @@ function show (event) {
     const pointerY = pageY - offset.top
 
     const scale = `scale(${this.el.clientWidth / 100 * 10})`
-    const { duration, color } = this.options
 
     const startStyles = {
         top: `${pointerY}px`,
