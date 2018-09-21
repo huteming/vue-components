@@ -19,9 +19,11 @@ export default {
         self.handler = show.bind(self)
 
         const disabledExp = self.el.dataset.rippleDisabled
-        self.vm.$watch(disabledExp, value => {
-            self.options.disabled = value
-        }, { immediate: true })
+        if (disabledExp) {
+            self.vm.$watch(disabledExp, value => {
+                self.options.disabled = value
+            }, { immediate: true })
+        }
 
         el.addEventListener('click', self.handler)
     },

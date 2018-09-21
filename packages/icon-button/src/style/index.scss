@@ -1,0 +1,25 @@
+.t-icon-button {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: none;
+    border-radius: 100%;
+    outline: none;
+    background-color: transparent;
+    fill: currentColor;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    .iconfont {
+        font-size: 20px;
+    }
+}

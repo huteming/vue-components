@@ -43,3 +43,4 @@ export { default as Ripple } from 'packages/ripple'
 
 // 未录入
 export { default as Icon } from 'packages/icon'
+export { default as IconButton } from 'packages/icon-button'
