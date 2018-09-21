@@ -39,6 +39,7 @@ export { default as Loadmore } from 'packages/loadmore'
 
 export { default as ImageLazyload } from 'packages/image-lazyload'
 export { default as InfiniteScroll } from 'packages/infinite-scroll'
+export { default as Ripple } from 'packages/ripple'
 
 // 未录入
 export { default as Icon } from 'packages/icon'

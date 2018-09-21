@@ -44,7 +44,7 @@ export default {
     components: {
         BaseButton,
         BaseDivider,
-        BaseIcon
+        BaseIcon,
     }
 }
 </script>

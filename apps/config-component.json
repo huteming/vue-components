@@ -176,6 +176,11 @@
                 "name": "infinite-scroll",
                 "english": "InfiniteScroll",
                 "chinese": "无限滚动"
+            },
+            {
+                "name": "ripple",
+                "english": "Ripple",
+                "chinese": "水波纹"
             }
         ]
     }

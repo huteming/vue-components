@@ -1,0 +1,15 @@
+.t-ripple-position {
+    position: relative;
+}
+
+.t-ripple-animation {
+    position: absolute;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    transition: all 0.7s ease-out;
+    transition-property: transform, opacity, -webkit-transform;
+    transform: scale(0);
+    pointer-events: none
+}
