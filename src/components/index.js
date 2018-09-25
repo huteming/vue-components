@@ -11,6 +11,7 @@ export { default as TabContainer } from 'packages/tab-container'
 export { default as Popup } from 'packages/popup'
 
 export { default as Button } from 'packages/button'
+export { default as IconButton } from 'packages/icon-button'
 export { default as Checkbox } from 'packages/checkbox'
 export { default as CheckboxItem } from 'packages/checkbox-item'
 export { default as Picker } from 'packages/picker'
@@ -43,4 +44,3 @@ export { default as Ripple } from 'packages/ripple'
 
 // 未录入
 export { default as Icon } from 'packages/icon'
-export { default as IconButton } from 'packages/icon-button'

@@ -1,5 +1,5 @@
 <template>
-<section class="t-icon-button" v-ripple>
+<section class="t-icon-button" v-ripple="{ color: 'rgba(0, 0, 0, .1)' }">
     <i class="iconfont" :class="`icon-${icon}`"></i>
 </section>
 </template>

@@ -1,6 +1,7 @@
 <template>
 <div class="page-example">
-    <span class="waves ts-btn" v-ripple>Press me!</span>
+    <div class="waves ts-btn" data-ripple-disabled="disabled" v-ripple>Press me!</div>
+    <div class="waves ts-btn" @click="disabled = !disabled">{{ disabled.toString() }}</div>
 </div>
 </template>
 
@@ -8,9 +9,15 @@
 import { Ripple } from 'tommy-ui'
 
 export default {
+    data () {
+        return {
+            disabled: true
+        }
+    },
+
     directives: {
         Ripple
-    }
+    },
 }
 </script>
 

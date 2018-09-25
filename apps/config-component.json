@@ -53,6 +53,11 @@
                 "chinese": "按钮"
             },
             {
+                "name": "icon-button",
+                "english": "IconButton",
+                "chinese": "图标按钮"
+            },
+            {
                 "name": "checkbox",
                 "english": "Checkbox",
                 "chinese": "复选框"
