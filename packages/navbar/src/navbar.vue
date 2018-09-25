@@ -1,6 +1,6 @@
 <template>
-<section class="t-navbar" :class="classes">
-    <div class="t-navbar-left">
+<section class="t-navbar">
+    <div class="t-navbar-left" v-if="$slots.left">
         <slot name="left"></slot>
     </div>
 
@@ -8,7 +8,7 @@
         <slot>{{ title }}</slot>
     </div>
 
-    <div class="t-navbar-right">
+    <div class="t-navbar-right" v-if="$slots.right">
         <slot name="right"></slot>
     </div>
 </section>
@@ -19,20 +19,13 @@ export default {
     name: 'BaseNavbar',
 
     props: {
-        mode: {
+        title: {
             type: String,
-            default: 'dark',
-            validator (val) {
-                return ['dark', 'light'].indexOf(val) > -1
-            }
+            default: '',
         },
-        title: String
     },
 
     computed: {
-        classes () {
-            return [`t-navbar-${this.mode}`]
-        }
-    }
+    },
 }
 </script>

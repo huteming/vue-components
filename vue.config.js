@@ -15,6 +15,7 @@ module.exports = {
                 'apps-docs': resolve('./apps-docs'),
                 'apps-example': resolve('./apps-example'),
                 'tommy-ui': resolve('./src/main.js'),
+                'mixins': resolve('./src/mixins'),
             }
         }
     },

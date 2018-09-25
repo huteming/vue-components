@@ -4,7 +4,7 @@
     @click="handleClick"
     v-ripple="{ color: rippleColor }"
     data-ripple-disabled="normalizedDisabled">
-    <i class="t-button-icon iconfont" :class="`icon-${normalizedIcon}`" v-if="normalizedIcon"></i>
+    <i class="iconfont t-button-icon" :class="`icon-${normalizedIcon}`" v-if="normalizedIcon"></i>
 
     <span class="t-button-text" v-if="$slots.default"> <slot></slot> </span>
 </section>
@@ -12,10 +12,12 @@
 
 <script>
 import Ripple from 'packages/ripple'
-import BaseIcon from '../../icon'
+import color from 'mixins/color'
 
 export default {
     name: 'BaseButton',
+
+    mixins: [color],
 
     props: {
         icon: {
@@ -34,18 +36,17 @@ export default {
             default: false,
         },
         fill: {
-            type: [Boolean, String],
+            type: Boolean,
             default: false,
         },
         outline: {
-            type: String,
-            default: '',
+            type: Boolean,
+            default: false,
         },
         inline: {
             type: Boolean,
             default: false,
         },
-
         loading: {
             type: Boolean,
             default: false
@@ -70,20 +71,24 @@ export default {
                 [`t-button-inline`]: this.inline,
             }
         },
+        styleText () {
+            return {
+                color: this.fill ? '#fff' : this.$_normalizedColor,
+            }
+        },
+        styleBorder () {
+            return {
+                border: this.outline ? `2px solid ${this.$_normalizedColor}` : 'none',
+            }
+        },
+        styleBackground () {
+            return {
+                background: this.fill ? `${this.$_normalizedColor}` : 'none',
+            }
+        },
         styles () {
-            const styles = {}
-
-            if (this.fill) {
-                styles['background-color'] = (typeof this.fill === 'string') ? this.fill : '#7e848c'
-                styles['color'] = '#fff'
-            }
-
-            if (this.outline) {
-                styles['border'] = `2px solid ${this.outline}`
-                styles['color'] = this.outline
-            }
-
-            return styles
+            const { styleText, styleBorder, styleBackground } = this
+            return { ...styleText, ...styleBorder, ...styleBackground }
         },
         rippleColor () {
             if (this.fill) {
@@ -113,7 +118,6 @@ export default {
     },
 
     components: {
-        BaseIcon
     },
 
     directives: {

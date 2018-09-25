@@ -1,58 +1,57 @@
+@import './mixin.scss';
+
 .t-card {
-    border-radius: 6px;
-    border: 1px solid #ebeef5;
-    background-color: #fff;
-    box-shadow: 4px 4px 30px 0 rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: .3s;
+    @include card-wrap;
+
+    &-media {
+        @include card-media;
+    }
 
     &-header {
-        position: relative;
-        padding: vw(28) vw(30) vw(20);
-        font-size: 13px;
-        line-height: 1;
-        color: #999;
-        box-sizing: border-box;
+        padding: 16px;
 
-        &:after {
-            content: ' ';
-            position: absolute;
-            bottom: 0;
-            left: vw(30);
-            right: 0;
-            height: 1px;
-            background: #E5E5E5;
-            transform-origin: 0 100%;
-            transform: scaleY(0.5);
+        &__title {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: .25px;
+            color: #000;
+            line-height: 32px;
+        }
+
+        &__subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: .1px;
+            color: rgba(0,0,0,.54);
+            line-height: 22px;
         }
     }
 
     &-content {
-        padding: vw(30);
-        color: #000;
+        padding: 0 16px 8px;
         font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: .25px;
     }
 
-    &-footer {
-        position: relative;
-        padding: vw(20) vw(30) vw(16);
-        color: #586C94;
-        font-size: 14px;
+    &-actions {
+        @include card-actions;
 
-        &:before {
-            content: ' ';
-            position: absolute;
-            top: 0;
-            left: vw(30);
-            right: 0;
-            height: 1px;
-            background: #E5E5E5;
-            transform-origin: 0 100%;
-            transform: scaleY(0.5);
+        &__buttons {
+            @include card-actions__buttons;
+        }
+
+        &__icons {
+            @include card-actions__icons;
+        }
+
+        &__buttons + &__icons {
+            margin-left: 16px;
         }
     }
 
     & + & {
-        margin-top: vw(60);
+        margin-top: 10px;
     }
 }

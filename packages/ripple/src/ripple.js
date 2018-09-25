@@ -52,8 +52,8 @@ function show (event) {
     }
 
     ripple.classList.remove('show')
-    const top = event.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop
-    const left = event.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft
+    const top = event.pageY - rect.top - ripple.offsetHeight / 2
+    const left = event.pageX - rect.left - ripple.offsetWidth / 2
 
     ripple.style.top = `${top}px`
     ripple.style.left = `${left}px`

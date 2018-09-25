@@ -1,143 +1,106 @@
 <template>
 <div class="page-example">
-    <!-- basic -->
+    <!-- text -->
     <template>
-        <base-divider>basic Buttons</base-divider>
+        <base-divider>text Buttons</base-divider>
 
         <base-flex gutter="10px">
             <base-flex-item>
-                <base-button>Button</base-button>
+                <base-button size="small">Button</base-button>
             </base-flex-item>
-            <base-flex-item>
-                <base-button>Button</base-button>
-            </base-flex-item>
-            <base-flex-item>
-                <base-button>Button</base-button>
-            </base-flex-item>
-        </base-flex>
-    </template>
-
-    <!-- icon -->
-    <template>
-        <base-divider>icon Buttons</base-divider>
-
-        <base-flex gutter="10px">
             <base-flex-item>
                 <base-button icon="success">Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button icon="success" fill="#4caf50">Button</base-button>
-            </base-flex-item>
-            <base-flex-item>
-                <base-button icon="success" outline="#4caf50">Button</base-button>
+                <base-button size="large">Button</base-button>
             </base-flex-item>
         </base-flex>
     </template>
 
-    <!-- size -->
+    <!-- raised fill -->
     <template>
-        <base-divider>Size Buttons</base-divider>
+        <base-divider>Raised Fill Buttons</base-divider>
 
         <base-flex gutter="10px">
             <base-flex-item>
-                <base-button size="small" raised>Button</base-button>
+                <base-button size="small" raised fill>Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button raised>Button</base-button>
+                <base-button icon="success" raised fill>Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button size="large" raised>Button</base-button>
+                <base-button size="large" raised fill>Button</base-button>
             </base-flex-item>
         </base-flex>
     </template>
 
     <!-- raised -->
     <template>
-        <base-divider>Raised Buttons</base-divider>
+        <base-divider>Fill Buttons</base-divider>
 
         <base-flex gutter="10px">
             <base-flex-item>
-                <base-button raised>Button</base-button>
+                <base-button size="small" fill>Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button raised>Button</base-button>
+                <base-button icon="success" fill>Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button raised>Button</base-button>
-            </base-flex-item>
-        </base-flex>
-    </template>
-
-    <!-- fill raised -->
-    <template>
-        <base-divider>Raised Fill Buttons</base-divider>
-
-        <base-flex gutter="10px">
-            <base-flex-item>
-                <base-button raised fill>Button</base-button>
-            </base-flex-item>
-            <base-flex-item>
-                <base-button raised fill="#ff5252">Button</base-button>
-            </base-flex-item>
-            <base-flex-item>
-                <base-button raised fill="#2196f3">Button</base-button>
+                <base-button size="large" fill>Button</base-button>
             </base-flex-item>
         </base-flex>
     </template>
 
     <!-- outline -->
     <template>
-        <base-divider>Raised Outline Buttons</base-divider>
+        <base-divider>Outline Buttons</base-divider>
 
         <base-flex gutter="10px">
             <base-flex-item>
-                <base-button>Button</base-button>
+                <base-button size="small" outline>Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button outline="#ff5252">Button</base-button>
+                <base-button icon="success" outline>Button</base-button>
             </base-flex-item>
             <base-flex-item>
-                <base-button outline="#2196f3">Button</base-button>
+                <base-button size="large" outline>Button</base-button>
             </base-flex-item>
         </base-flex>
     </template>
 
-    <base-divider>Color Buttons</base-divider>
+    <!-- color -->
+    <template>
+        <base-divider>Color Buttons</base-divider>
 
-    <base-flex gutter="10px" style="margin-bottom: 20px;">
-        <base-flex-item>
-            <base-button raised fill>Button</base-button>
-        </base-flex-item>
-        <base-flex-item>
-            <base-button raised fill="#ff5252">Button</base-button>
-        </base-flex-item>
-        <base-flex-item>
-            <base-button raised fill="#2196f3">Button</base-button>
-        </base-flex-item>
-    </base-flex>
+        <base-flex gutter="10px">
+            <base-flex-item>
+                <base-button color="blue" size="small" raised fill>blue</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button color="teal" icon="success" raised fill>teal</base-button>
+            </base-flex-item>
+            <base-flex-item>
+                <base-button color="green" size="large" raised fill>green</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
 
-    <base-flex gutter="10px">
-        <base-flex-item>
-            <base-button raised fill="#4caf50">Button</base-button>
-        </base-flex-item>
-        <base-flex-item>
-            <base-button raised fill="#ffc107">Button</base-button>
-        </base-flex-item>
-    </base-flex>
+    <!-- 其他 -->
+    <template>
+        <base-divider>其他</base-divider>
 
-    <base-divider>其他</base-divider>
-
-    <base-flex gutter="10px" style="margin-bottom: 20px;">
-        <base-flex-item :grow="0">
-            <base-button fill>inline</base-button>
-        </base-flex-item>
-        <base-flex-item :grow="0">
-            <base-button fill loading>loading</base-button>
-        </base-flex-item>
-        <base-flex-item :grow="0">
-            <base-button fill disabled>disabled</base-button>
-        </base-flex-item>
-    </base-flex>
+        <base-flex gutter="10px">
+            <base-flex-item :grow="0">
+                <base-button fill>inline</base-button>
+            </base-flex-item>
+            <base-flex-item :grow="0">
+                <base-button fill loading>loading</base-button>
+            </base-flex-item>
+            <base-flex-item :grow="0">
+                <base-button fill disabled>disabled</base-button>
+            </base-flex-item>
+        </base-flex>
+    </template>
 </div>
 </template>
 
