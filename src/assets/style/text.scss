@@ -1,3 +1,124 @@
-.text-bold {
-    font-weight: bold;
+.t-typography {
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: inherit;
+    text-transform: inherit;
+}
+
+.t--headline1 {
+    font-size: root-font(6);
+    line-height: root-font(6);
+    font-weight: 300;
+    letter-spacing: -0.01562em;
+
+    @extend .t-typography;
+}
+
+.t--headline2 {
+    font-size: root-font(3.75);
+    line-height: root-font(3.75);
+    font-weight: 300;
+    letter-spacing: -0.00833em;
+
+    @extend .t-typography;
+}
+
+.t--headline3 {
+    font-size: root-font(3);
+    line-height: root-font(3.125);
+    font-weight: 400;
+    letter-spacing: normal;
+
+    @extend .t-typography;
+}
+
+.t--headline4 {
+    font-size: root-font(2.125);
+    line-height: root-font(2.5);
+    font-weight: 400;
+    letter-spacing: 0.00735em;
+
+    @extend .t-typography;
+}
+
+.t--headline5 {
+    font-size: root-font(1.5);
+    line-height: root-font(2);
+    font-weight: 400;
+    letter-spacing: normal;
+
+    @extend .t-typography;
+}
+
+.t--headline6 {
+    font-size: root-font(1.25);
+    line-height: root-font(2);
+    font-weight: 500;
+    letter-spacing: 0.0125em;
+
+    @extend .t-typography;
+}
+
+.t--subtitle1 {
+    font-size: root-font(1);
+    line-height: root-font(1.75);
+    font-weight: 400;
+    letter-spacing: 0.00937em;
+
+    @extend .t-typography;
+}
+
+.t--subtitle2 {
+    font-size: root-font(0.875);
+    line-height: root-font(1.375);
+    font-weight: 500;
+    letter-spacing: 0.00714em;
+
+    @extend .t-typography;
+}
+
+.t--body1 {
+    font-size: root-font(1);
+    line-height: root-font(1.5);
+    font-weight: 400;
+    letter-spacing: 0.03125em;
+
+    @extend .t-typography;
+}
+
+.t--body2 {
+    font-size: root-font(0.875);
+    line-height: root-font(1.25);
+    font-weight: 400;
+    letter-spacing: 0.01786em;
+
+    @extend .t-typography;
+}
+
+.t--caption {
+    font-size: root-font(0.75);
+    line-height: root-font(1.25);
+    font-weight: 400;
+    letter-spacing: 0.03333em;
+
+    @extend .t-typography;
+}
+
+.t--button {
+    font-size: root-font(0.875);
+    line-height: root-font(2.25);
+    font-weight: 500;
+    letter-spacing: 0.08929em;
+
+    @extend .t-typography;
+}
+
+.t--overline {
+    font-size: root-font(0.75);
+    line-height: root-font(2);
+    font-weight: 500;
+    letter-spacing: 0.16667em;
+
+    @extend .t-typography;
 }

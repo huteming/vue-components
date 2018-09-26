@@ -1,3 +1,10 @@
 @function vw ($px, $screen-width: 750) {
     @return ($px / $screen-width) * 100vw;
 }
+
+// 根据 html 字体大小计算合适字体大小
+// 现代Web浏览器的默认值为 16px
+// html 的字体大小经常被用于 rem 适配
+@function root-font ($size, $root-font: 16px) {
+    @return $size * $root-font
+}

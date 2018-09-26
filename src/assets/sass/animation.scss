@@ -1,10 +1,6 @@
-$transition-duration: .3s;
-$transition-function: cubic-bezier(.55, 0, .1, 1);
-$transition: all $transition-duration $transition-function;
-
 .spread-center-enter-active,
 .spread-center-leave-active {
-    transition: transform 0.3s $transition-function;
+    transition: transform 0.3s $transition-ease-in-out;
     transform-origin: center;
 }
 
@@ -119,11 +115,11 @@ $transition: all $transition-duration $transition-function;
 }
 
 .bounce-enter-active {
-    animation: bounce-in .3s $transition-function;
+    animation: bounce-in .3s $transition-ease;
 }
 
 .bounce-leave-active {
-    animation: bounce-in .3s $transition-function reverse;
+    animation: bounce-in .3s $transition-ease reverse;
 }
 
 @keyframes bounce-in {

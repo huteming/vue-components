@@ -58,6 +58,11 @@
                 "chinese": "图标按钮"
             },
             {
+                "name": "float-button",
+                "english": "FloatButton",
+                "chinese": "浮动按钮"
+            },
+            {
                 "name": "checkbox",
                 "english": "Checkbox",
                 "chinese": "复选框"
