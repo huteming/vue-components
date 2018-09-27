@@ -21,5 +21,5 @@ Vue.use(FloatButton)
 -----|-----|------|------|-----------|
 | icon | 图标 | String | | |
 | text | 文本 | String  | | |
-| text-position | 文本位置 | `left`, `right` | `left` |
+| text-position | 文本位置 | String | `left`, `right` | `left` |
 | mini | 小号按钮 | Boolean | | `false` |

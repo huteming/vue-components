@@ -26,4 +26,4 @@ Vue.use(Ripple)
 | color | 水波纹颜色 | String | | `rgba(255, 255, 255)` |
 | opacity | 透明度 | Number | | `0.3` |
 | center | 水波纹起始位置固定为中心。一般用于圆形按钮 | Boolean | | `false` |
-| disabled | 禁用 | Boolean | | `false` |
+| disabled | 禁用。支持动态更新 | Boolean | | `false` |
