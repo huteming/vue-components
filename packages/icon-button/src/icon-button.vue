@@ -1,5 +1,5 @@
 <template>
-<section class="t-icon-button" v-ripple="{ color: 'rgba(0, 0, 0, .1)' }">
+<section class="t-icon-button" v-ripple="{ color: 'rgba(0, 0, 0, .3)', center: true }">
     <i class="iconfont" :class="`icon-${icon}`"></i>
 </section>
 </template>
@@ -15,6 +15,14 @@ export default {
             type: String,
             default: '',
         }
+    },
+
+    data () {
+        return {
+        }
+    },
+
+    mounted () {
     },
 
     directives: {

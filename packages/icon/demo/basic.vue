@@ -1,60 +1,37 @@
 <template>
 <div class="page-example">
     <div class="content">
-        <div class="icon-group">
-            <base-icon icon="success"></base-icon>
-            <div>success</div>
-        </div>
-
-        <div class="icon-group">
-            <base-icon icon="actionsheet"></base-icon>
-            <div>actionsheet</div>
-        </div>
-
-        <div class="icon-group">
-            <base-icon icon="calendar"></base-icon>
-            <div>calendar</div>
-        </div>
-
-        <div class="icon-group">
-            <base-icon icon="infinite"></base-icon>
-            <div>infinite</div>
-        </div>
-
-        <div class="icon-group">
-            <base-icon icon="message"></base-icon>
-            <div>message</div>
-        </div>
-
-        <div class="icon-group">
-            <base-icon icon="card"></base-icon>
-            <div>card</div>
-        </div>
+        <AppGroup icon="satisfied_deep" size="30px" />
+        <AppGroup icon="navigate-next" size="30px" />
+        <AppGroup icon="navigate-before" size="30px" />
+        <AppGroup icon="success" />
+        <AppGroup icon="favorite_border" />
+        <AppGroup icon="arrow-up" />
+        <AppGroup icon="arrow-down" />
+        <AppGroup icon="arrow-left" />
+        <AppGroup icon="arrow-right" />
+        <AppGroup icon="add" />
     </div>
 </div>
 </template>
 
 <script>
-import { Icon as BaseIcon } from 'tommy-ui'
+import AppGroup from './group'
 
 export default {
     components: {
-        BaseIcon
-    }
+        AppGroup,
+    },
 }
 </script>
 
 <style lang="scss" scoped>
 .content {
+    padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-}
-
-.icon-group {
-    flex: 1 1 (100% / 3);
-    margin-bottom: 15px;
 }
 </style>

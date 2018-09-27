@@ -1,22 +1,31 @@
 .t-ripple {
     position: absolute;
     border-radius: 100%;
-    transform: scale(0);
-    pointer-events: none;
+    overflow: hidden;
+    transform-style: preserve-3d; // fix 移动端 overflow: hidden 失效
 
-    &-position {
-        position: relative;
-        overflow: hidden;
-    }
+    &-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        transform: scale(0);
+        pointer-events: none;
 
-    &.show {
-        animation: ripple .4s ease-out;
-    }
-
-    @keyframes ripple {
-        to {
-            transform: scale(2);
-            opacity: 0;
+        &.show {
+            animation: animation-opacity .45s $transition-ease-out, animation-size .45s $transition-ease-out;
+        }
+    
+        @keyframes animation-size {
+            to {
+                transform: scale(2);
+            }
+        }
+    
+        @keyframes animation-opacity {
+            to {
+                opacity: 0;
+            }
         }
     }
 }

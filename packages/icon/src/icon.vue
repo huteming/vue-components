@@ -3,13 +3,22 @@
 </template>
 
 <script>
+import color from 'mixins/color'
+
 export default {
     name: 'BaseIcon',
 
+    mixins: [color('#000')],
+
     props: {
-        icon: String,
-        color: String,
-        size: String
+        icon: {
+            type: String,
+            required: true,
+        },
+        size: {
+            type: String,
+            default: '',
+        },
     },
 
     computed: {
@@ -18,8 +27,8 @@ export default {
         },
         styles () {
             return {
-                color: this.color,
-                'font-size': this.size
+                color: this.$_normalizedColor,
+                'font-size': this.size,
             }
         }
     }

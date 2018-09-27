@@ -1,6 +1,8 @@
 <template>
 <div class="page-example">
-    <base-icon-button icon="success"></base-icon-button>
+    <div class="content">
+        <base-icon-button icon="favorite_border"></base-icon-button>
+    </div>
 </div>
 </template>
 
@@ -13,3 +15,14 @@ export default {
     },
 }
 </script>
+
+<style lang="scss" scoped>
+.page-example {
+    padding: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+</style>

@@ -1,18 +1,18 @@
-> 图标
+> 图标按钮
 
 -------------
 
 ## 例子
 
 ```javascript
-import { Icon } from 'tommy-ui'
+import { IconButton } from 'tommy-ui'
 
-Vue.use(Icon)
-// Vue.component(Icon.name, Icon)
+Vue.use(IconButton)
+// Vue.component(IconButton.name, IconButton)
 ```
 
 ```html
-<base-icon icon="success"></base-icon>
+<base-icon-button icon="favorite_border"></base-icon-button>
 ```
 
 ## API
@@ -20,5 +20,3 @@ Vue.use(Icon)
 | 属性 | 说明 | 类型 | 默认值 |
 |-----|-----|------|------|
 | icon | 图标 | String | |
-| size | 大小 | String | `16px` |
-| color | 颜色 | String | |

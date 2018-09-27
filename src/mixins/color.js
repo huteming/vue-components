@@ -1,16 +1,18 @@
 import theme from 'packages/theme'
 
-export default {
-    props: {
-        color: {
-            type: String,
-            default: 'deepPurple',
-        }
-    },
+export default (defaultColor = 'deepPurple') => {
+    return {
+        props: {
+            color: {
+                type: String,
+                default: defaultColor,
+            }
+        },
 
-    computed: {
-        $_normalizedColor () {
-            return theme.color[this.color] || this.color
-        }
-    },
+        computed: {
+            $_normalizedColor () {
+                return theme.color[this.color] || this.color
+            }
+        },
+    }
 }

@@ -12,7 +12,7 @@ Vue.use(Icon)
 ```
 
 ```html
-<base-icon icon="success"></base-icon>
+<base-icon icon="satisfied_deep"></base-icon>
 ```
 
 ## API
@@ -20,5 +20,5 @@ Vue.use(Icon)
 | 属性 | 说明 | 类型 | 默认值 |
 |-----|-----|------|------|
 | icon | 图标 | String | |
-| size | 大小 | String | `16px` |
-| color | 颜色 | String | |
+| size | 大小 | String | `24px` |
+| color | 颜色 | String | `#000` |

@@ -1,16 +1,16 @@
 <template>
 <div class="page-example">
-    <base-float-button icon="add"></base-float-button>
+    <base-float-button icon="favorite_border"></base-float-button>
 
-    <BaseWhiteSpace />
+    <BaseWhiteSpace size="large" />
 
-    <base-float-button icon="add" mini></base-float-button>
+    <base-float-button icon="favorite_border" mini></base-float-button>
 
-    <BaseWhiteSpace />
+    <BaseWhiteSpace size="large" />
 
     <base-float-button icon="add" text="create"></base-float-button>
 
-    <BaseWhiteSpace />
+    <BaseWhiteSpace size="large" />
 
     <base-float-button icon="add" text="create" text-position="right"></base-float-button>
 </div>
@@ -29,6 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 .page-example {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
     padding: 20px;
 }
 </style>

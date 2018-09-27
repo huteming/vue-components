@@ -13,7 +13,7 @@ Vue.component(Button.name, Button)
 ## 例子
 
 ```html
-<base-button type="default">default</base-button>
+<base-button icon="success">Button</base-button>
 ```
 
 ## API
@@ -23,7 +23,7 @@ Vue.component(Button.name, Button)
 | icon | 图标 | String |  | |
 | size | 尺寸 | String | `small`, `normal`, `large` | `normal` |
 | raised | 阴影 | Boolean | | `false` |
-| fill | 填充背景。为 true 时，默认填充 #7e848c | Boolean, String | | `false` |
+| fill | 填充背景。为 true 时，默认填充 grey | Boolean, String | | `false` |
 | outline | 填充字体和边框 | String | | |
 | inline | 显示为行内元素 | Boolean | | `false` |
 | disabled | 禁用状态 | Boolean | | `false` |

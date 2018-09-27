@@ -1,20 +1,19 @@
 <template>
-<section class="t-float-button" :class="classes" :style="styles">
-    <span class="t-float-button-text" v-if="text && textPosition === 'left'">{{ text }}</span>
+<section class="t-float-button" :class="classes" :style="styles" v-ripple>
+    <span class="t-float-button-text" :class="{ 'right': textPosition === 'right' }" v-if="text">{{ text }}</span>
 
-    <i class="iconfont" :class="`icon-${icon}`"></i>
-
-    <span class="t-float-button-text" v-if="text && textPosition === 'right'">{{ text }}</span>
+    <i class="iconfont" :class="`icon-${icon}`" :style="styleIcon"></i>
 </section>
 </template>
 
 <script>
 import color from 'mixins/color'
+import Ripple from 'packages/ripple'
 
 export default {
     name: 'BaseFloatButton',
 
-    mixins: [color],
+    mixins: [color('grey')],
 
     props: {
         icon: {
@@ -50,6 +49,25 @@ export default {
                 't-float-button--mini': (this.mini && !this.text),
             }
         },
+        styleIcon () {
+            if (!this.text) return {}
+
+            if (this.textPosition === 'left') {
+                return {
+                    'margin-left': '12px',
+                    'margin-right': '-8px',
+                }
+            }
+
+            return {
+                'margin-left': '-8px',
+                'margin-right': '12px',
+            }
+        }
+    },
+
+    directives: {
+        Ripple,
     },
 }
 </script>

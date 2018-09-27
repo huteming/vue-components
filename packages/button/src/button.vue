@@ -17,7 +17,7 @@ import color from 'mixins/color'
 export default {
     name: 'BaseButton',
 
-    mixins: [color],
+    mixins: [color('grey')],
 
     props: {
         icon: {

@@ -1,7 +1,8 @@
 const CTX = '@@Ripple'
+
 const defaults = {
-    duration: 400,
     color: 'rgba(255, 255, 255, 0.4)',
+    center: false,
     disabled: false,
 }
 
@@ -36,28 +37,42 @@ export default {
 }
 
 function show (event) {
-    const { el: target, options: { color, disabled } } = this
+    const self = this
+    const { el: target, options: { color, disabled, center } } = this
 
     if (disabled) return
+    this.disabled = true
 
     const rect = target.getBoundingClientRect()
-    let ripple = target.querySelector('.t-ripple')
+    let container = target.querySelector('.t-ripple')
+    let ripple = target.querySelector('.t-ripple-container')
 
-    if (!ripple) {
-        ripple = document.createElement('div')
-        ripple.className = 't-ripple'
+    if (!container) {
+        container = document.createElement('div')
+        container.className = 't-ripple'
         const size = Math.max(rect.width, rect.height)
-        ripple.setAttribute('style', `width: ${size}px; height: ${size}px; background: ${color};`)
-        target.appendChild(ripple)
+        container.setAttribute('style', `width: ${size}px; height: ${size}px;`)
+
+        ripple = document.createElement('div')
+        ripple.className = 't-ripple-container'
+        ripple.setAttribute('style', `background: ${color};`)
+
+        container.appendChild(ripple)
+        target.appendChild(container)
     }
 
-    ripple.classList.remove('show')
-    const top = event.pageY - rect.top - ripple.offsetHeight / 2
-    const left = event.pageX - rect.left - ripple.offsetWidth / 2
+    const left = center ? 0 : event.pageX - rect.left - ripple.offsetWidth / 2
+    const top = center ? 0 : event.pageY - rect.top - ripple.offsetHeight / 2
 
     ripple.style.top = `${top}px`
     ripple.style.left = `${left}px`
+
     ripple.classList.add('show')
+
+    setTimeout(() => {
+        ripple.classList.remove('show')
+        self.disabled = false
+    }, 450)
 
     return false
 }
