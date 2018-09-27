@@ -11,7 +11,7 @@ export default (defaultColor = 'deepPurple') => {
 
         computed: {
             $_normalizedColor () {
-                return theme.color[this.color] || this.color
+                return theme.color[this.color] || this.color || theme.color[defaultColor]
             }
         },
     }

@@ -1,7 +1,11 @@
 <template>
 <div class="page-example">
-    <div class="waves ts-btn" data-ripple-disabled="disabled" v-ripple>Press me!</div>
-    <div class="waves ts-btn" @click="disabled = !disabled">{{ disabled.toString() }}</div>
+    <div class="waves ts-btn" v-ripple="{ disabled: disabled, color: '' }">Press me!</div>
+    <div class="waves ts-btn" v-ripple="{ disabled: disabled, color: 'purple', opacity: 1 }">Press me!</div>
+    <div class="waves ts-btn circle" v-ripple="{ disabled: disabled, center: true }">Press me!</div>
+
+    <div class="waves ts-btn" @click="disabled = !disabled">disabled: {{ disabled.toString() }}</div>
+    <!-- <div class="waves ts-btn" @click="handleColorChange">color: {{ color || 'default' }}</div> -->
 </div>
 </template>
 
@@ -11,8 +15,26 @@ import { Ripple } from 'tommy-ui'
 export default {
     data () {
         return {
-            disabled: true
+            disabled: false,
+            color: 'purple',
         }
+    },
+
+    methods: {
+        handleClick () {
+            console.log('click basic')
+        },
+        handleColorChange () {
+            if (!this.color) {
+                this.color = 'purple'
+                return
+            }
+            if (this.color === 'purple') {
+                this.color = 'blue'
+                return
+            }
+            this.color = ''
+        },
     },
 
     directives: {
@@ -39,5 +61,10 @@ export default {
     background: #f57035;
     color: #fff;
     border-radius: 5px;
+
+    &.circle {
+        width: 56px;
+        border-radius: 50%;
+    }
 }
 </style>
