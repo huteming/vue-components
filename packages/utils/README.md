@@ -19,6 +19,10 @@ image.preview([files])
 image.compress(dataURL, options)
     .then(({ file, width, height }) => {})
     .catch(err => {})
+
+image.convert(this.getImage(), 'image', 'canvas')
+    .then(canvas => {})
+    .catch(err => {})
 ```
 
 ## image
@@ -28,6 +32,7 @@ image.compress(dataURL, options)
 | load | 加载图片，支持多张图片 | String / Array(String) |
 | preview | 预览图片，支持多张图片 | File / Array(File) |
 | compress | 压缩图片，支持多张图片 | dataURL / File / Array<>, optionsCompress |
+| convert | 图像各个格式间的相互转换 | data, convertFrom, convertTo, optionsConvert |
 
 ### optionsCompress
 
@@ -38,3 +43,12 @@ image.compress(dataURL, options)
 | mimeType | 图像格式。优先保留图片原有类型 | String | `image/png` |
 | quality | 图象质量, 0 ~ 1。图像格式是 image/jpeg 或 image/webp 有效 | Number | `1.0` |
 | force | 强制使用 memeType 转换图像格式 | Boolean | `false` |
+
+### convertFrom
+
+可选值 `canvas`, `dataURL`, `image`, `file`, `url`。
+值为 `url` 时, convertTo 只能为 `image`
+
+### convertTo
+
+可选值 `canvas`, `dataURL`, `image`, `file`

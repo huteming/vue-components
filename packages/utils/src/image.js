@@ -14,11 +14,11 @@ const defaultCompress = {
  */
 export function preview (data) {
     if (Array.isArray(data)) {
-        const promises = data.map(previewSingle)
+        const promises = data.map(fileToDataURL)
         return Promise.all(promises)
     }
 
-    return previewSingle(data)
+    return fileToDataURL(data)
 }
 
 /**
@@ -29,11 +29,11 @@ export function preview (data) {
  */
 export function load (data) {
     if (Array.isArray(data)) {
-        const promises = data.map(loadSingle)
+        const promises = data.map(urlToImage)
         return Promise.all(promises)
     }
 
-    return loadSingle(data)
+    return urlToImage(data)
 }
 
 /**
@@ -50,6 +50,184 @@ export function compress (data, options) {
     }
 
     return compressSingle(data, options)
+}
+
+export function convert (data, from, to, options) {
+    if (from === 'url') {
+        to = 'image'
+    }
+
+    const maps = {
+        canvasToImage,
+        canvasToFile,
+        canvasToDataURL,
+        dataURLToCanvas,
+        dataURLToImage,
+        dataURLToFile,
+        imageToCanvas,
+        imageToDataURL,
+        imageToFile,
+        fileToCanvas,
+        fileToDataURL,
+        fileToImage,
+        urlToImage,
+    }
+
+    const handler = Object.keys(maps)
+        .filter(item => item.startsWith(from))
+        .filter(item => {
+            to = to.slice(0, 1).toUpperCase() + to.slice(1)
+            return item.endsWith(to)
+        })
+        .shift()
+
+    return maps[handler](data, options)
+}
+
+// canvas
+function canvasToImage (canvas, options) {
+    // console.log('canvas to image')
+    return canvasToDataURL(canvas)
+        .then(dataURL => {
+            return dataURLToImage(dataURL)
+        })
+}
+
+function canvasToFile (canvas, options) {
+    // console.log('canvas to file')
+    return new Promise((resolve, reject) => {
+        canvas.toBlob(blob => {
+            resolve(blob)
+        }, 'image/png')
+    })
+}
+
+function canvasToDataURL (canvas, options) {
+    // console.log('canvas to dataURL')
+    return Promise.resolve(canvas.toDataURL('image/png'))
+}
+
+// dataURL
+function dataURLToCanvas (dataURL, options) {
+    // console.log('dataURL to canvas')
+    return dataURLToImage(dataURL)
+        .then(image => {
+            return imageToCanvas(image)
+        })
+}
+
+function dataURLToImage (dataURL, options) {
+    // console.log('dataURL to image')
+    return new Promise((resolve, reject) => {
+        const img = new Image()
+        img.setAttribute('crossOrigin', 'anonymous')
+
+        img.onload = function () {
+            resolve(img)
+        }
+        img.onerror = function () {
+            reject(new Error(`dataURL渲染错误[${dataURL}]`))
+        }
+
+        img.src = dataURL
+    })
+}
+
+function dataURLToFile (dataURL, options) {
+    // console.log('dataURL to file')
+    const arr = dataURL.split(',')
+    const type = arr[0].match(/:(.*?);/)[1]
+    const bstr = atob(arr[1])
+    let n = bstr.length
+    const u8arr = new Uint8Array(n)
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n)
+    }
+
+    return Promise.resolve(new Blob([u8arr], { type }))
+}
+
+// image
+function imageToCanvas (image, options) {
+    // console.log('image to canvas')
+    return new Promise((resolve, reject) => {
+        const { width, height } = image
+        const { canvas, context } = getCanvas(width, height)
+
+        context.drawImage(image, 0, 0, width, height)
+
+        resolve(canvas)
+    })
+}
+
+function imageToDataURL (image, options) {
+    // console.log('image to dataURL')
+    return imageToCanvas(image)
+        .then(canvas => {
+            return canvasToDataURL(canvas)
+        })
+}
+
+function imageToFile (image, options) {
+    // console.log('image to file')
+    image.setAttribute('crossOrigin', 'anonymous')
+
+    return imageToCanvas(image)
+        .then(canvas => {
+            return canvasToFile(canvas)
+        })
+}
+
+// file
+function fileToCanvas (blob, options) {
+    // console.log('file to canvas')
+    return fileToImage(blob)
+        .then(image => {
+            return imageToCanvas(image)
+        })
+}
+
+function fileToDataURL (blob, options) {
+    // console.log('file to dataURL')
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+
+        reader.onload = function () {
+            resolve(reader.result)
+        }
+
+        reader.onerror = function (event) {
+            reject(event)
+        }
+
+        reader.readAsDataURL(blob)
+    })
+}
+
+function fileToImage (blob, options) {
+    // console.log('file to image')
+    return fileToDataURL(blob)
+        .then(dataURL => {
+            return dataURLToImage(dataURL)
+        })
+}
+
+// url => image
+function urlToImage (url, options) {
+    return new Promise((resolve, reject) => {
+        const img = new Image()
+        img.setAttribute('crossOrigin', 'anonymous')
+
+        img.onload = function () {
+            resolve(img)
+        }
+        img.onerror = function () {
+            reject(new Error(`渲染地址错误[${url}]`))
+        }
+
+        img.src = `${url}?timestamp=${Date.now()}`
+    })
 }
 
 /**
@@ -121,44 +299,32 @@ function compressSingle (data, options = {}) {
 }
 
 /**
- * 图片加载，一张
- * @argument {String} data 图片地址
+ * 获取 canvas 对象
+ * @argument {Number} width 画布宽度
+ * @argument {Number} height 画布高度
  *
- * @return {Promise} image(DOM)
+ * @return {Object} context, canvas
  */
-function loadSingle (data) {
-    return new Promise((resolve, reject) => {
-        const img = new Image()
-        img.setAttribute('crossOrigin', 'anonymous')
+function getCanvas (width, height) {
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
 
-        img.onload = function () {
-            resolve(img)
-        }
-        img.onerror = function () {
-            reject(new Error(`渲染地址错误[${data}]`))
-        }
+    const devicePixelRatio = window.devicePixelRatio || 1
+    const backingStorePixelRatio = context.webkitBackingStorePixelRatio ||
+                                   context.mozBackingStorePixelRatio ||
+                                   context.msBackingStorePixelRatio ||
+                                   context.oBackingStorePixelRatio ||
+                                   context.backingStorePixelRatio || 1
 
-        img.src = `${data}?timestamp=${Date.now()}`
-    })
-}
+    const scale = devicePixelRatio / backingStorePixelRatio
 
-/**
- * 图片预览，一张
- * @param {File} data 图片文件
- * @return {Promise} dataURL, image
- */
-function previewSingle (data) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader()
+    canvas.width = width * scale
+    canvas.height = height * scale
 
-        reader.onload = function () {
-            resolve(reader.result)
-        }
+    context.scale(scale, scale)
 
-        reader.onerror = function (event) {
-            reject(event)
-        }
-
-        reader.readAsDataURL(data)
-    })
+    return {
+        context,
+        canvas,
+    }
 }
