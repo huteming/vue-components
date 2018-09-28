@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { image } from 'packages/tool'
+import { image } from 'packages/utils'
 
 export default {
     props: {

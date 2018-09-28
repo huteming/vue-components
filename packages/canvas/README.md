@@ -7,8 +7,8 @@
 Canvas 为构造函数。主要是解决了 canvas 在不同分辨率中显示可能模糊的问题。
 
 ```javascript
-import { utils } from 'tommy-ui'
-const { Canvas } = utils
+import { Constructors } from 'tommy-ui'
+const { Canvas } = Constructors
 
 const instance = new Canvas(480, 854)
 

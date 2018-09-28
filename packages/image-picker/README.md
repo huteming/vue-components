@@ -29,9 +29,8 @@ export default {
     },
 
     methods: {
-        handleLoad ({ dataURL, image }) {
+        handleLoad (dataURL) {
             this.image = dataURL
-            // this.$el.appendChild(image)
         },
     }
 }
@@ -60,7 +59,6 @@ export default {
 
     methods: {
         handleLoadMultiple (images) {
-            images = images.map(item => item.dataURL)
             this.images.push(...images)
         },
     },

@@ -7,13 +7,14 @@
 </template>
 
 <script>
-import { utils } from 'tommy-ui'
+import { Utils, Constructors } from 'tommy-ui'
+const { image } = Utils
+const { Canvas } = Constructors
+
 const ImgTime = 'https://api.jinghao.com/getImages/wxjhsyimages/tip-01.png'
 const ImgAvatar = 'http://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEKoIvWhsa7vfhaqYMu3SiaLxakMrXm7jqkexeA8dcHu9pVWradOSpxaEmTJSicr95yvD5Xk7iaqNBUZw/132'
 const ImgCover = 'https://api.jinghao.com/getImages/FiqP8Z7S5FZNdYuwc422Ksu-xXW7'
 const ImgQrcode = 'https://api.jinghao.com/getImages/FjKoX0lUYhvLi8TzCQ6Mx0cwPPiu'
-
-const { Canvas, loadImages } = utils
 
 export default {
     data () {
@@ -24,7 +25,7 @@ export default {
 
     methods: {
         draw () {
-            return loadImages(ImgTime, ImgAvatar, ImgCover, ImgQrcode)
+            return image.load([ImgTime, ImgAvatar, ImgCover, ImgQrcode])
                 .then(([imgTime, imgAvatar, imgCover, imgQrcode]) => {
                     const instance = new Canvas(480, 854)
 

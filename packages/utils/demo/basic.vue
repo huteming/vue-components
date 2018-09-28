@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { utils, Toast } from 'tommy-ui'
-const { loadImages } = utils
+import { Utils, Toast } from 'tommy-ui'
+const { image } = Utils
 
 const ImgCover = 'https://api.jinghao.com/getImages/FiqP8Z7S5FZNdYuwc422Ksu-xXW7'
 const ImgQrcode = 'https://api.jinghao.com/getImages/FjKoX0lUYhvLi8TzCQ6Mx0cwPPiu'
@@ -22,7 +22,7 @@ export default {
 
     methods: {
         load () {
-            loadImages(ImgCover, ImgQrcode)
+            image.load([ImgCover, ImgQrcode])
                 .then(([imgCover, imgQrcode]) => {
                     this.cover = ImgCover
                     this.qrcode = ImgQrcode

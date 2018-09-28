@@ -28,12 +28,10 @@ export default {
     },
 
     methods: {
-        handleLoad ({ dataURL, image }) {
+        handleLoad (dataURL) {
             this.image = dataURL
-            // this.$el.appendChild(image)
         },
         handleLoadMultiple (images) {
-            images = images.map(item => item.dataURL)
             this.images.push(...images)
         },
     },

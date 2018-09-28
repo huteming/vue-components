@@ -13,8 +13,8 @@
         "title": "other",
         "list": [
             {
-                "name": "tool",
-                "english": "Tool",
+                "name": "utils",
+                "english": "Utils",
                 "chinese": "其他辅助方法"
             }
         ]

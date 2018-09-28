@@ -1,7 +1,5 @@
-import Canvas from 'packages/canvas'
-import * as tools from 'packages/tool'
+import * as utils from 'packages/utils'
 
-export const utils = {
-    Canvas,
-    ...tools
+export const Utils = {
+    ...utils
 }
