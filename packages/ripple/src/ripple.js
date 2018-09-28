@@ -47,6 +47,6 @@ export default {
     unbind (el) {
         const { instance } = el[CTX]
 
-        el.parentNode.removeChild(instance.$el)
+        el.removeChild(instance.$el)
     },
 }

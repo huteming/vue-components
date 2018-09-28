@@ -40,6 +40,7 @@ export { default as Progress } from 'packages/progress'
 export { default as Loadmore } from 'packages/loadmore'
 
 export { default as ImageLazyload } from 'packages/image-lazyload'
+export { default as ImagePicker } from 'packages/image-picker'
 export { default as InfiniteScroll } from 'packages/infinite-scroll'
 export { default as Ripple } from 'packages/ripple'
 

@@ -183,6 +183,11 @@
                 "chinese": "图片懒加载"
             },
             {
+                "name": "image-picker",
+                "english": "ImagePicker",
+                "chinese": "图片选择"
+            },
+            {
                 "name": "infinite-scroll",
                 "english": "InfiniteScroll",
                 "chinese": "无限滚动"
