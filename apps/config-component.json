@@ -96,6 +96,11 @@
                 "name": "range",
                 "english": "Range",
                 "chinese": "滑动输入条"
+            },
+            {
+                "name": "audio",
+                "english": "Audio",
+                "chinese": "音频"
             }
         ]
     },

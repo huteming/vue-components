@@ -23,6 +23,7 @@ export { default as Radio } from 'packages/radio'
 export { default as RadioItem } from 'packages/radio-item'
 export { default as Switch } from 'packages/switch'
 export { default as Range } from 'packages/range'
+export { default as Audio } from 'packages/audio'
 
 export { default as Carousel } from 'packages/carousel'
 export { default as CarouselItem } from 'packages/carousel-item'
