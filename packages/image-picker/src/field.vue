@@ -42,9 +42,9 @@ export default {
                     if (this.max) {
                         files = files.slice(0, this.max)
                     }
-                    promise = image.preview(files)
+                    promise = image.preview(files, { compress: true })
                 } else {
-                    promise = image.preview(files[0])
+                    promise = image.preview(files[0], { compress: true })
                 }
 
                 promise

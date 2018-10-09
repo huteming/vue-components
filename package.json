@@ -15,6 +15,7 @@
     "deploy:npm": "vue-cli-service build --target lib --name tommy-ui src/main.js && npm publish"
   },
   "dependencies": {
+    "exif-js": "^2.3.0",
     "intersection-observer": "^0.5.0",
     "vue": "^2.5.17"
   },

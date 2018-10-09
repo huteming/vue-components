@@ -1,7 +1,7 @@
 <template>
 <div class="page-example">
     <div class="content" v-image-picker="handleLoad">点击选择</div>
-    <img :src="image" alt="" style="max-width: 100%;" />
+    <img :src="image" alt="" style="width: 100%; display: block;" ref="image" />
 
     <!-- <base-divider>压缩后</base-divider> -->
     <!-- <img :src="imageCompressed" alt="" style="max-width: 100%;" /> -->
@@ -51,6 +51,11 @@ export default {
                 .then(dataURL => {
                     this.imageCompressed = dataURL
                 })
+        },
+        handleImageLoad () {
+            const { width, height } = getComputedStyle(this.$refs.image)
+            alert(width)
+            alert(height)
         },
     },
 

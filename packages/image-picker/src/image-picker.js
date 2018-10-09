@@ -7,8 +7,14 @@ const defaults = {
     multiple: false,
     max: Infinity,
     disabled: false,
-    onload: ({ dataURL, image }) => {},
-    onerror: (event) => {},
+    onload: (dataURL) => {},
+    onerror: (error) => {
+        if (process.env.NODE_ENV === 'development') {
+            alert(error && error.message)
+        } else {
+            throw error
+        }
+    },
 }
 
 const Field = Vue.extend(field)

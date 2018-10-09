@@ -1,3 +1,5 @@
+import EXIF from 'exif-js'
+
 const defaultCompress = {
     maxWidth: 1100,
     maxHeight: 1100,
@@ -6,19 +8,32 @@ const defaultCompress = {
     force: false,
 }
 
+const defaultOptions = {
+    compress: false,
+
+    orientation: 1,
+
+    maxWidth: 1100,
+    maxHeight: 1100,
+    mimeType: 'image/png',
+    quality: 1.0,
+}
+
 /**
  * 图片预览，File => dataURL
- * @argument {File, Array<File>} data 图片文件
+ * @argument {File, Array<File>} files 图片文件
  *
  * @return {Promise} dataURL, image
  */
-export function preview (data) {
-    if (Array.isArray(data)) {
-        const promises = data.map(fileToDataURL)
+export function preview (files, options = {}) {
+    if (Array.isArray(files)) {
+        const promises = files.map(file => {
+            return fileToDataURL(file, options)
+        })
         return Promise.all(promises)
     }
 
-    return fileToDataURL(data)
+    return fileToDataURL(files, options)
 }
 
 /**
@@ -102,9 +117,11 @@ function canvasToFile (canvas, options) {
     })
 }
 
-function canvasToDataURL (canvas, options) {
-    // console.log('canvas to dataURL')
-    return Promise.resolve(canvas.toDataURL('image/png'))
+function canvasToDataURL (canvas, options = {}) {
+    options = Object.assign({}, defaultOptions, options)
+    const { mimeType, quality } = options
+
+    return Promise.resolve(canvas.toDataURL(mimeType, quality))
 }
 
 // dataURL
@@ -116,8 +133,9 @@ function dataURLToCanvas (dataURL, options) {
         })
 }
 
-function dataURLToImage (dataURL, options) {
-    // console.log('dataURL to image')
+function dataURLToImage (dataURL, options = {}) {
+    options = Object.assign({}, defaultOptions, options)
+
     return new Promise((resolve, reject) => {
         const img = new Image()
         img.setAttribute('crossOrigin', 'anonymous')
@@ -149,13 +167,66 @@ function dataURLToFile (dataURL, options) {
 }
 
 // image
-function imageToCanvas (image, options) {
-    // console.log('image to canvas')
-    return new Promise((resolve, reject) => {
-        const { width, height } = image
-        const { canvas, context } = getCanvas(width, height)
+function imageToCanvas (image, options = {}) {
+    options = Object.assign({}, defaultOptions, options)
+    // 最大尺寸限制
+    const { maxWidth, maxHeight, compress, orientation } = options
 
-        context.drawImage(image, 0, 0, width, height)
+    return new Promise((resolve, reject) => {
+        // 图片原始尺寸
+        const originWidth = image.width
+        const originHeight = image.height
+        // 目标尺寸
+        let targetWidth = originWidth
+        let targetHeight = originHeight
+        // 图片尺寸超过限制
+        if (compress && (originWidth > maxWidth || originHeight > maxHeight)) {
+            if (originWidth / originHeight > maxWidth / maxHeight) {
+                // 更宽，按照宽度限定尺寸
+                targetWidth = maxWidth
+                targetHeight = Math.round(maxWidth * (originHeight / originWidth))
+            } else {
+                targetHeight = maxHeight
+                targetWidth = Math.round(maxHeight * (originWidth / originHeight))
+            }
+        }
+
+        // fix 图片旋转问题
+        let canvasWidth = targetWidth
+        let canvasHeight = targetHeight
+        let regRotate = 0
+        let canvasX = 0
+        let canvasY = 0
+
+        if (orientation && orientation !== 1) {
+            switch (orientation) {
+            case 6: // 旋转90度
+                canvasWidth = targetHeight
+                canvasHeight = targetWidth
+                regRotate = Math.PI / 2
+                canvasX = 0
+                canvasY = -targetHeight
+                break
+            case 3: // 旋转180度
+                canvasWidth = targetWidth
+                canvasHeight = targetHeight
+                regRotate = Math.PI
+                canvasX = -targetWidth
+                canvasY = -targetHeight
+                break
+            case 8: // 旋转-90度
+                canvasWidth = targetWidth
+                canvasHeight = targetHeight
+                regRotate = 3 * Math.PI / 2
+                canvasX = -targetWidth
+                canvasY = 0
+                break
+            }
+        }
+
+        const { canvas, context } = getCanvas(canvasWidth, canvasHeight)
+        context.rotate(regRotate)
+        context.drawImage(image, canvasX, canvasY, targetWidth, targetHeight)
 
         resolve(canvas)
     })
@@ -188,20 +259,33 @@ function fileToCanvas (blob, options) {
         })
 }
 
-function fileToDataURL (blob, options) {
-    // console.log('file to dataURL')
+function fileToDataURL (blob, options = {}) {
+    options = Object.assign({}, defaultOptions, options)
+
     return new Promise((resolve, reject) => {
-        const reader = new FileReader()
+        EXIF.getData(blob, function () {
+            options.orientation = EXIF.getTag(blob, 'Orientation')
+            const reader = new FileReader()
 
-        reader.onload = function () {
-            resolve(reader.result)
-        }
+            reader.onload = function () {
+                dataURLToImage(reader.result, options)
+                    .then(image => {
+                        return imageToCanvas(image, options)
+                    })
+                    .then(canvas => {
+                        return canvasToDataURL(canvas, options)
+                    })
+                    .then(dataURL => {
+                        resolve(dataURL)
+                    })
+            }
 
-        reader.onerror = function (event) {
-            reject(event)
-        }
+            reader.onerror = function (error) {
+                reject(error)
+            }
 
-        reader.readAsDataURL(blob)
+            reader.readAsDataURL(blob)
+        })
     })
 }
 
@@ -317,14 +401,19 @@ function getCanvas (width, height) {
                                    context.backingStorePixelRatio || 1
 
     const scale = devicePixelRatio / backingStorePixelRatio
+    width *= scale
+    height *= scale
 
-    canvas.width = width * scale
-    canvas.height = height * scale
+    canvas.width = width
+    canvas.height = height
 
+    // 清除画布
     context.scale(scale, scale)
+    context.clearRect(0, 0, width, height)
 
     return {
         context,
         canvas,
+        scale,
     }
 }
