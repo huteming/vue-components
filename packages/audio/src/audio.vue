@@ -1,6 +1,8 @@
 <template>
 <section class="t-audio">
-    <div class="t-audio-action" :class="{ play: play }" @click="handleAudioToggle"></div>
+    <div class="t-audio-action" @click="handleAudioToggle">
+        <i class="iconfont" :class="normalizedActionIcon" style="font-size: 32px;"></i>
+    </div>
 
     <div class="t-audio-container" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
         <div class="t-audio-title">{{ title }}</div>
@@ -20,9 +22,11 @@
         ref="audio"
         :src="url"
         preload="auto"
-        @play="play = true"
-        @pause="play = false"
+        @play="state = 'playing'"
+        @pause="state = 'pause'"
+        @waiting="state = 'waiting'"
         @canplay="handleCanPlay"
+        @canplaythrough="handleCanPlayThrough"
         @timeupdate="handleAudioTimeUpdate"
         @progress="handleDownload"
         @ended="handleAudioEnd">
@@ -48,7 +52,7 @@ export default {
     data () {
         return {
             // 播放状态
-            play: false,
+            state: 'pause',
             // 当前播放时间
             currentTime: 0,
             // 音频总时长
@@ -77,6 +81,16 @@ export default {
                 width: `${this.rate * this.widthRange}px`,
             }
         },
+        normalizedActionIcon () {
+            switch (this.state) {
+            case 'playing':
+                return 'icon-pause_circle'
+            case 'pause':
+                return 'icon-play_circle'
+            case 'waiting':
+                return 'icon-loading'
+            }
+        },
     },
 
     mounted () {
@@ -96,6 +110,11 @@ export default {
                 this.ready = true
             }
         },
+        handleCanPlayThrough () {
+            if (this.state === 'waiting') {
+                this.state = 'playing'
+            }
+        },
         /**
          * audio 下载中
          */
@@ -111,10 +130,12 @@ export default {
          * audio 开始播放 / 暂停
          */
         handleAudioToggle () {
+            if (this.state === 'waiting') return
+
             clearTimeout(this.timerPlay)
             const audio = this.$refs.audio
 
-            if (this.play) {
+            if (this.state === 'playing') {
                 audio.pause()
             } else {
                 audio.play()
@@ -135,14 +156,18 @@ export default {
          * audio 播放中
          */
         handleAudioTimeUpdate () {
-            const nextTime = Math.round(this.$refs.audio.currentTime)
-            this.updateCurrentTime(nextTime, false, !this.moving)
+            this.$nextTick(() => {
+                const nextTime = Math.round(this.$refs.audio.currentTime)
+                this.updateCurrentTime(nextTime, false, !this.moving)
+            })
         },
         /**
          * audio 播放完
          */
         handleAudioEnd () {
-            this.updateCurrentTime(0, false, !this.moving)
+            this.$nextTick(() => {
+                this.updateCurrentTime(0, false, !this.moving)
+            })
         },
         /**
          * 手势滑动

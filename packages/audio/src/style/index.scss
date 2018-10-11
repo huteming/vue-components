@@ -10,14 +10,9 @@
         width: 32px;
         height: 32px;
         margin-right: 15px;
-        background: url('http://jhsy-img.caizhu.com/jhsy/images/co/audio-play2.png') center center no-repeat;
-        background-size: auto 32px;
-        border-radius: 100%;
-        border: #666666 solid 1px;
-
-        &.play {
-            background-image: url('http://jhsy-img.caizhu.com/jhsy/images/co/audio-pause2.png');
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &-container {

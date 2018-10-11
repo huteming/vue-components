@@ -1,3 +1,5 @@
+import './registerServiceWorker'
+
 import 'normalize.css'
 import './assets/style/index.scss'
 import './assets/iconfont/iconfont.css'
