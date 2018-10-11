@@ -156,18 +156,16 @@ export default {
          * audio 播放中
          */
         handleAudioTimeUpdate () {
-            this.$nextTick(() => {
-                const nextTime = Math.round(this.$refs.audio.currentTime)
-                this.updateCurrentTime(nextTime, false, !this.moving)
-            })
+            if (!this.ready) return
+
+            const nextTime = Math.round(this.$refs.audio.currentTime)
+            this.updateCurrentTime(nextTime, false, !this.moving)
         },
         /**
          * audio 播放完
          */
         handleAudioEnd () {
-            this.$nextTick(() => {
-                this.updateCurrentTime(0, false, !this.moving)
-            })
+            this.updateCurrentTime(0, false, !this.moving)
         },
         /**
          * 手势滑动
