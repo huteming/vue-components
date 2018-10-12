@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { storage } from 'packages/utils'
+import { utils } from 'packages/utils'
 
 export default {
     name: 'BaseAudio',
@@ -214,7 +214,7 @@ export default {
          * 从缓存读取进度
          */
         getCurrentTimeFromCache () {
-            const cache = storage.getSession('cache-audio-percent') || []
+            const cache = utils.storage.getSession('cache-audio-percent') || []
             const cacheItem = cache.find(item => item.url === this.url)
             if (cacheItem) {
                 this.updateCurrentTime(cacheItem.currentTime, true, true)
@@ -222,7 +222,7 @@ export default {
         },
         // 保存进度
         setCurrentTimeInCache () {
-            const cache = storage.getSession('cache-audio-percent') || []
+            const cache = utils.storage.getSession('cache-audio-percent') || []
             const newCacheItem = {
                 url: this.url,
                 currentTime: this.currentTime
@@ -235,7 +235,7 @@ export default {
                 cache.push(newCacheItem)
             }
 
-            storage.setSession('cache-audio-percent', cache)
+            utils.storage.setSession('cache-audio-percent', cache)
         },
     },
 

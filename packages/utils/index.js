@@ -1,7 +1,16 @@
-import * as classes from './src/classlist.js'
-import * as fnImage from './src/image.js'
-import * as fnStorage from './src/storage.js'
+import CanvasDraw from './src/canvas'
+import * as classlist from './src/classlist'
+import ImageConvertor from './src/image'
+import * as storage from './src/storage'
+import * as tool from './src/tool'
 
-export const classlist = classes
-export const image = fnImage
-export const storage = fnStorage
+export const utils = {
+    classlist,
+    storage,
+    tool,
+}
+
+export const constructors = {
+    CanvasDraw,
+    ImageConvertor,
+}

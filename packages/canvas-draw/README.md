@@ -4,13 +4,12 @@
 
 ## 例子
 
-Canvas 为构造函数。主要是解决了 canvas 在不同分辨率中显示可能模糊的问题。
+CanvasDraw 为构造函数。主要是解决了 canvas 在不同分辨率中显示可能模糊的问题。
 
 ```javascript
 import { Constructors } from 'tommy-ui'
-const { Canvas } = Constructors
 
-const instance = new Canvas(480, 854)
+const instance = new Constructors.CanvasDraw(480, 854)
 
 instance.use(({ context, canvas, ratio, width, height }) => {
     instance.drawText('我在静好书院读书', 24, 93)
@@ -19,7 +18,7 @@ instance.use(({ context, canvas, ratio, width, height }) => {
 const src = instance.done()
 ```
 
-## Canvas 构造函数参数
+## 构造函数参数
 
 | name | 描述 | 默认参数 |
 |------|--------|-------|

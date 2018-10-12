@@ -3,9 +3,19 @@
         "title": "Canvas",
         "list": [
             {
-                "name": "canvas",
+                "name": "canvas-draw",
                 "english": "Canvas",
                 "chinese": "画布"
+            }
+        ]
+    },
+    {
+        "title": "Image",
+        "list": [
+            {
+                "name": "image-convertor",
+                "english": "Image Convertor",
+                "chinese": "图片格式转换器"
             }
         ]
     },

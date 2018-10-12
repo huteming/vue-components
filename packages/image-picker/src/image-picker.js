@@ -7,7 +7,7 @@ const defaults = {
     multiple: false,
     max: Infinity,
     disabled: false,
-    onload: (dataURL) => {},
+    onload: (dataURI) => {},
     onerror: (error) => {
         if (process.env.NODE_ENV === 'development') {
             alert(error && error.message)

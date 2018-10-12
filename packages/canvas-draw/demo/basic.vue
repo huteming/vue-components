@@ -7,9 +7,7 @@
 </template>
 
 <script>
-import { Utils, Constructors } from 'tommy-ui'
-const { image } = Utils
-const { Canvas } = Constructors
+import { Constructors } from 'tommy-ui'
 
 const ImgTime = 'https://api.jinghao.com/getImages/wxjhsyimages/tip-01.png'
 const ImgAvatar = 'http://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEKoIvWhsa7vfhaqYMu3SiaLxakMrXm7jqkexeA8dcHu9pVWradOSpxaEmTJSicr95yvD5Xk7iaqNBUZw/132'
@@ -25,9 +23,11 @@ export default {
 
     methods: {
         draw () {
-            return image.load([ImgTime, ImgAvatar, ImgCover, ImgQrcode])
+            const imageConvertor = new Constructors.ImageConvertor([ImgTime, ImgAvatar, ImgCover, ImgQrcode])
+
+            return imageConvertor.getImage()
                 .then(([imgTime, imgAvatar, imgCover, imgQrcode]) => {
-                    const instance = new Canvas(480, 854)
+                    const instance = new Constructors.CanvasDraw(480, 854)
 
                     // 背景
                     instance.use(() => {

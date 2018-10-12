@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { image } from 'packages/utils'
+import { constructors } from 'packages/utils'
 
 export default {
     props: {
@@ -35,22 +35,21 @@ export default {
         handleFileChange (event) {
             let files = Array.from(event.target.files)
 
-            if (files.length) {
-                let promise = null
+            if (!files.length) return
 
-                if (this.multiple) {
-                    if (this.max) {
-                        files = files.slice(0, this.max)
-                    }
-                    promise = image.preview(files, { compress: true })
-                } else {
-                    promise = image.preview(files[0], { compress: true })
+            if (this.multiple) {
+                if (this.max) {
+                    files = files.slice(0, this.max)
                 }
-
-                promise
-                    .then(this.onload)
-                    .catch(this.onerror)
+            } else {
+                files = files[0]
             }
+
+            const instance = new constructors.ImageConvertor(files, { compress: true })
+
+            instance.getDataURI()
+                .then(this.onload)
+                .catch(this.onerror)
 
             event.target.value = '' // fix 选中相同图片时，不触发 change 事件
         },
