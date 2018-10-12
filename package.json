@@ -1,6 +1,6 @@
 {
   "name": "tommy-ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Mobile UI elements for vue.js",
   "main": "dist/tommy-ui.common.js",
   "author": "huteming <549270031@qq.com>",
