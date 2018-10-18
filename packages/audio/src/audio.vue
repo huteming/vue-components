@@ -156,7 +156,7 @@ export default {
          * audio 播放中
          */
         handleAudioTimeUpdate () {
-            if (!this.ready) return
+            if (!this.ready) return // fix 偶尔会先触发事件 canplay，导致缓存进度失效
 
             const nextTime = Math.round(this.$refs.audio.currentTime)
             this.updateCurrentTime(nextTime, false, !this.moving)

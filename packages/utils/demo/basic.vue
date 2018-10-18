@@ -8,7 +8,7 @@
 
 <script>
 import { Constructors } from 'tommy-ui'
-const { ImageConvertor } = Constructors
+const { ImageConvertor, Validator } = Constructors
 
 export default {
     data () {
@@ -17,7 +17,22 @@ export default {
         }
     },
 
+    mounted () {
+        // this.validate()
+    },
+
     methods: {
+        validate () {
+            const validator = new Validator()
+
+            validator.add('123', 'maxlength:1', '最大长度')
+
+            const message = validator.execute()
+
+            if (message) {
+                alert(message)
+            }
+        },
         getURL () {
             return this.cover
         },
