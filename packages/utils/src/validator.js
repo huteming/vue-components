@@ -38,7 +38,16 @@ export default class Validator {
 }
 
 function isRequired (value) {
-    return isNumber(value) || !!value
+    if (value === undefined || value === null) {
+        return false
+    }
+    if (Array.isArray(value) && !value.length) {
+        return false
+    }
+    if (typeof value === 'string' && !value) {
+        return false
+    }
+    return true
 }
 
 function isEmail (value) {
