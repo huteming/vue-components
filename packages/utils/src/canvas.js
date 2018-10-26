@@ -187,11 +187,10 @@ const defaultText = {
     variant: 'normal', // 字体变体 normal, small-caps
     weight: 'normal', // 字体的粗细 bold bolder lighter 100 200 300 400 500 600 700 800 900
     size: 12, // 字号
-    lineHeight: 1, // 行高
+    lineHeight: 0, // 行高 （若不存在，则在运行时会重置为 size）
     align: 'start', // 对齐方式 start, end, center, left, right
     baseline: 'top', // 文本基线, alphabetic, top, hanging, middle, ideographic, bottom
     lineWidth: 1, // 画笔宽度
-    lineSpacing: 1, // 行间距
     wrap: 'nowrap',
     color: '#000',
     type: 'fill',
@@ -200,30 +199,14 @@ const defaultText = {
 function drawText (text, x, y, options = {}) {
     console.log(`draw text *** text: ${text} *** x: ${x} *** y: ${y}`)
     const { context, ratio } = this
-    let {
-        prefix = '',
-        suffix = '',
-        fix = '.... ',
-        maxWidth = 0,
-        style = 'normal',
-        variant = 'normal',
-        weight = 'normal',
-        size = 12,
-        lineHeight = 1,
-        lineWidth = 1,
-        align = 'start',
-        baseline = 'top',
-        lineSpacing = 1,
-        wrap = 'nowrap',
-        color,
-        type,
-    } = Object.assign({}, defaultText, options)
+    let { prefix, suffix, fix, maxWidth, style, variant, weight, size, lineHeight, lineWidth, align, baseline, wrap, color, type } = Object.assign({}, defaultText, options)
 
     x *= ratio
     y *= ratio
     maxWidth *= ratio
+    lineHeight = lineHeight || size
 
-    context.font = `${style} ${variant} ${weight} ${size}px / ${size * lineHeight}px arial`
+    context.font = `${style} ${variant} ${weight} ${size}px / ${lineHeight}px arial`
     context.lineWidth = lineWidth
     context[`${type}Style`] = color
     context.textAlign = align
@@ -240,10 +223,10 @@ function drawText (text, x, y, options = {}) {
 
             if (isBeyond) {
                 const residueWidth = maxWidth - prefixWidth - suffixWidth - context.measureText(fix).width
-    
+
                 for (let i = text.length - 1; i >= 0; i--) {
                     text = text.substring(0, i)
-    
+
                     if (context.measureText(text).width <= residueWidth) {
                         text = `${text}${fix}`
                         break
@@ -272,7 +255,7 @@ function drawText (text, x, y, options = {}) {
     }
 
     drawtext.forEach((linetext, index) => {
-        context[`${type}Text`](linetext, x, y + (index * lineSpacing))
+        context[`${type}Text`](linetext, x, y + (index * lineHeight))
     })
 }
 
