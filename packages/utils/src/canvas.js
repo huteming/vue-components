@@ -191,8 +191,10 @@ const defaultText = {
     align: 'start', // 对齐方式 start, end, center, left, right
     baseline: 'top', // 文本基线, alphabetic, top, hanging, middle, ideographic, bottom
     lineWidth: 1, // 画笔宽度
+    lineSpacing: 1, // 行间距
+    wrap: 'nowrap',
     color: '#000',
-    type: 'fill'
+    type: 'fill',
 }
 
 function drawText (text, x, y, options = {}) {
@@ -211,8 +213,10 @@ function drawText (text, x, y, options = {}) {
         lineWidth = 1,
         align = 'start',
         baseline = 'top',
+        lineSpacing = 1,
+        wrap = 'nowrap',
         color,
-        type
+        type,
     } = Object.assign({}, defaultText, options)
 
     x *= ratio
@@ -225,25 +229,51 @@ function drawText (text, x, y, options = {}) {
     context.textAlign = align
     context.textBaseline = baseline
 
-    const prefixWidth = context.measureText(prefix).width
-    const textWidth = context.measureText(text).width
-    const suffixWidth = context.measureText(suffix).width
-    const isBeyond = (maxWidth > 0) && (prefixWidth + textWidth + suffixWidth > maxWidth)
+    let drawtext = [`${prefix}${text}${suffix}`]
 
-    if (isBeyond) {
-        const residueWidth = maxWidth - prefixWidth - suffixWidth - context.measureText(fix).width
+    if (maxWidth > 0) {
+        if (wrap === 'nowrap') {
+            const prefixWidth = context.measureText(prefix).width
+            const textWidth = context.measureText(text).width
+            const suffixWidth = context.measureText(suffix).width
+            const isBeyond = (prefixWidth + textWidth + suffixWidth > maxWidth)
 
-        for (let i = text.length - 1; i >= 0; i--) {
-            text = text.substring(0, i)
-
-            if (context.measureText(text).width <= residueWidth) {
-                text = `${text}${fix}`
-                break
+            if (isBeyond) {
+                const residueWidth = maxWidth - prefixWidth - suffixWidth - context.measureText(fix).width
+    
+                for (let i = text.length - 1; i >= 0; i--) {
+                    text = text.substring(0, i)
+    
+                    if (context.measureText(text).width <= residueWidth) {
+                        text = `${text}${fix}`
+                        break
+                    }
+                }
             }
+
+            drawtext = [`${prefix}${text}${suffix}`]
+        } else {
+            text = `${prefix}${text}${suffix}`.split('')
+            let line = 0
+            let drawLines = []
+
+            text.forEach(char => {
+                let originText = drawLines[line] || ''
+                let actualText = `${originText}${char}`
+                if (context.measureText(`${actualText}`).width > maxWidth) {
+                    line++
+                    actualText = char
+                }
+                drawLines[line] = `${actualText}`
+            })
+
+            drawtext = drawLines.concat()
         }
     }
 
-    context[`${type}Text`](`${prefix}${text}${suffix}`, x, y)
+    drawtext.forEach((linetext, index) => {
+        context[`${type}Text`](linetext, x, y + (index * lineSpacing))
+    })
 }
 
 /**
