@@ -182,16 +182,17 @@ const defaultText = {
     prefix: '', // 前缀
     suffix: '', // 后缀
     fix: '.... ', // 过长省略时添加字符串
-    maxWidth: 0, // 最长宽度，会在末尾加上 fix 字符串，一般搭配前缀 后缀使用
+    maxWidth: Infinity, // 最长宽度，会在末尾加上 fix 字符串，一般搭配前缀 后缀使用
     style: 'normal', // 字体的风格 normal, italic, oblique
     variant: 'normal', // 字体变体 normal, small-caps
     weight: 'normal', // 字体的粗细 bold bolder lighter 100 200 300 400 500 600 700 800 900
-    size: 12, // 字号
+    size: 24, // 字号
     lineHeight: 0, // 行高 （若不存在，则在运行时会重置为 size）
     align: 'start', // 对齐方式 start, end, center, left, right
     baseline: 'top', // 文本基线, alphabetic, top, hanging, middle, ideographic, bottom
+    letterSpacing: 0,
     lineWidth: 1, // 画笔宽度
-    wrap: 'nowrap',
+    wrap: false, // 是否换行
     color: '#000',
     type: 'fill',
 }
@@ -199,64 +200,126 @@ const defaultText = {
 function drawText (text, x, y, options = {}) {
     console.log(`draw text *** text: ${text} *** x: ${x} *** y: ${y}`)
     const { context, ratio } = this
-    let { prefix, suffix, fix, maxWidth, style, variant, weight, size, lineHeight, lineWidth, align, baseline, wrap, color, type } = Object.assign({}, defaultText, options)
+    options = Object.assign({}, defaultText, options)
 
     x *= ratio
     y *= ratio
-    maxWidth *= ratio
-    lineHeight = lineHeight || size
+    options.maxWidth *= ratio
+    options.size *= ratio
+    options.lineHeight = options.lineHeight * ratio || options.size
+    options.letterSpacing = options.letterSpacing * ratio
+
+    let {
+        prefix, suffix, fix, letterSpacing, wrap, maxWidth,
+        style, variant, weight, size, color, align,
+        lineHeight, lineWidth, baseline, type,
+    } = options
 
     context.font = `${style} ${variant} ${weight} ${size}px / ${lineHeight}px arial`
     context.lineWidth = lineWidth
     context[`${type}Style`] = color
-    context.textAlign = align
     context.textBaseline = baseline
 
-    let drawtext = [`${prefix}${text}${suffix}`]
+    const prefixArray = stringToArray(prefix)
+    const suffixArray = stringToArray(suffix)
+    const textArray = stringToArray(text)
 
-    if (maxWidth > 0) {
-        if (wrap === 'nowrap') {
-            const prefixWidth = context.measureText(prefix).width
-            const textWidth = context.measureText(text).width
-            const suffixWidth = context.measureText(suffix).width
-            const isBeyond = (prefixWidth + textWidth + suffixWidth > maxWidth)
+    if (!wrap) {
+        const prefixWidth = getArrayTextWidth.call(this, prefixArray, letterSpacing, true)
+        const suffixWidth = getArrayTextWidth.call(this, suffixArray, letterSpacing, true)
+        const textWidth = getArrayTextWidth.call(this, textArray, letterSpacing)
 
-            if (isBeyond) {
-                const residueWidth = maxWidth - prefixWidth - suffixWidth - context.measureText(fix).width
+        if (prefixWidth + suffixWidth + textWidth > maxWidth) {
+            const residueWidth = maxWidth - prefixWidth - suffixWidth - context.measureText(fix).width
 
-                for (let i = text.length - 1; i >= 0; i--) {
-                    text = text.substring(0, i)
+            for (let i = textArray.length - 1; i >= 0; i--) {
+                textArray.pop()
 
-                    if (context.measureText(text).width <= residueWidth) {
-                        text = `${text}${fix}`
-                        break
-                    }
+                if (getArrayTextWidth.call(this, textArray, letterSpacing) <= residueWidth) {
+                    const last = textArray[textArray.length - 1]
+                    textArray[textArray.length - 1] = `${last}${fix}`
+                    break
                 }
             }
-
-            drawtext = [`${prefix}${text}${suffix}`]
-        } else {
-            text = `${prefix}${text}${suffix}`.split('')
-            let line = 0
-            let drawLines = []
-
-            text.forEach(char => {
-                let originText = drawLines[line] || ''
-                let actualText = `${originText}${char}`
-                if (context.measureText(`${actualText}`).width > maxWidth) {
-                    line++
-                    actualText = char
-                }
-                drawLines[line] = `${actualText}`
-            })
-
-            drawtext = drawLines.concat()
         }
     }
 
-    drawtext.forEach((linetext, index) => {
-        context[`${type}Text`](linetext, x, y + (index * lineHeight))
+    text = [].concat(prefixArray, textArray, suffixArray)
+    const actualWidth = Math.min(maxWidth, getArrayTextWidth.call(this, text, letterSpacing, false))
+    // 临时修改为文本左对齐
+    context.textAlign = 'left'
+
+    // 根据水平对齐方式确定第一个字符的坐标
+    if (align === 'center') {
+        x = x - actualWidth / 2
+    } else if (align === 'right') {
+        x = x - actualWidth
+    }
+
+    let actualX = x
+    let actualY = y
+    // 开始逐字绘制
+    text.forEach((letter) => {
+        const letterWidth = context.measureText(letter).width
+
+        if (actualX + letterWidth > maxWidth + x) { // 另起一行画
+            actualX = x
+            actualY = actualY + lineHeight
+        } else { // 当前行画
+        }
+
+        context[`${type}Text`](letter, actualX, actualY)
+        actualX += letterWidth + letterSpacing
     })
+
+    // 对齐方式还原
+    context.textAlign = align
+}
+
+function stringToArray (string) {
+    let start = -1
+    let end = -1
+    const res = []
+
+    string.split('').forEach((letter, index) => {
+        if (/[0-9a-zA-Z]/.test(letter)) {
+            if (start > -1) {
+                end = index + 1
+            } else {
+                start = index
+                end = index + 1
+            }
+        } else {
+            if (start > -1) {
+                res.push(string.substring(start, end))
+                start = -1
+            }
+            res.push(letter)
+        }
+    })
+
+    if (start > -1) {
+        res.push(string.substring(start, end))
+    }
+
+    return res
+}
+
+function getArrayTextWidth (array, letterSpacing, fix = false) {
+    const { context } = this
+    const length = array.length
+    let width = 0
+
+    array.forEach((letter, index) => {
+        width += (index === length - 1 ? 0 : letterSpacing)
+        width += context.measureText(letter).width
+    })
+
+    if (fix && length > 1) {
+        width += letterSpacing
+    }
+
+    return width
 }
 
 /**
