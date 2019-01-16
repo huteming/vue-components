@@ -10,8 +10,8 @@ export * from './utils'
 export * from './constructors'
 
 // 引入样式
-const styleContext = require.context('packages', true, /\/style\/index\.scss$/)
-styleContext.keys().forEach(styleContext)
+// const styleContext = require.context('packages', true, /\/style\/index\.scss$/)
+// styleContext.keys().forEach(styleContext)
 
 export default {
     install (Vue, opts = {}) {

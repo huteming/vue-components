@@ -11,3 +11,7 @@ export default {
     name: 'BasePicker'
 }
 </script>
+
+<style lang="scss" scoped>
+@import './style/index.scss';
+</style>

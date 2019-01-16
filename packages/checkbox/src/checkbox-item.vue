@@ -70,3 +70,7 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+@import './style/item.scss';
+</style>
