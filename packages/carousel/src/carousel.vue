@@ -6,7 +6,6 @@ export default {
 
     props: {
         /**
-         * 因为 group 的存在，好像只能以序号表示?
          */
         value: {
             type: Number,
@@ -36,18 +35,6 @@ export default {
         disabledTouch: {
             type: Boolean,
             default: false,
-        },
-        /**
-         * 一组元素个数
-         * 影响事件: getCurrentActive, getRenderData, tryStopTimer
-         */
-        group: {
-            type: Number,
-            default: 1,
-        },
-        groupClass: {
-            type: String,
-            default: '',
         },
     },
 
@@ -96,12 +83,12 @@ export default {
 
     render (h) {
         // console.log('render')
-        const { handleTouchstart, handleTouchmove, handleTouchend, moveX, getRenderData, groupClass, group, clientWidth } = this
+        const { handleTouchstart, handleTouchmove, handleTouchend, moveX, getRenderData, clientWidth } = this
 
         const defaults = this.$slots.default || []
         const panes = defaults.filter(item => /CarouselItem/.test(item.tag))
 
-        this.totalGroup = Math.ceil(panes.length / group)
+        this.totalGroup = panes.length
         const { prev, current, next } = getRenderData(panes)
 
         const styleContainer = {
@@ -114,15 +101,15 @@ export default {
                     onTouchstart={ handleTouchstart }
                     onTouchmove={ handleTouchmove }
                     onTouchend={ handleTouchend }>
-                    <carousel-group ref="prev" class={ groupClass }>
+                    <carousel-group ref="prev">
                         { prev }
                     </carousel-group>
 
-                    <carousel-group class={ groupClass }>
+                    <carousel-group>
                         { current }
                     </carousel-group>
 
-                    <carousel-group ref="next" class={ groupClass }>
+                    <carousel-group ref="next">
                         { next }
                     </carousel-group>
                 </div>
@@ -210,8 +197,8 @@ export default {
             })
         },
         /**
-         * -2: 子元素总个数为 0
-         * -1: 子元素总个数为 1
+         * 可选值: 'next', 'prev', '', [number]
+         * @returns {Number} -2: 子元素总个数为 0; -1: 子元素总个数为 1
          */
         getCurrentActive (action) {
             const total = this.totalGroup
@@ -221,6 +208,10 @@ export default {
             }
 
             let currentActive = (() => {
+                if (typeof action === 'number') {
+                    return action
+                }
+
                 switch (action) {
                 case 'increase':
                     return this.active + 1
@@ -235,11 +226,11 @@ export default {
             return currentActive >= 0 ? currentActive : currentActive + total
         },
         getRenderData (panes) {
-            const { loop, group, totalGroup } = this
+            const { loop, totalGroup } = this
             const currentActive = this.getCurrentActive()
 
             function getGroup (start) {
-                return panes.slice(start * group, start * group + group)
+                return panes.slice(start * 1, start * 1 + 1)
             }
 
             if (currentActive === -2) {
@@ -329,6 +320,7 @@ export default {
                 self.$emit('change', self.active, oldActive)
             })
         },
+        setActiveItem (_active) {},
     },
 
     components: {

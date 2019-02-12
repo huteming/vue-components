@@ -1,5 +1,5 @@
 <template>
-<div class="t-carousel-item">
+<div class="tm-carousel-item">
     <slot></slot>
 </div>
 </template>
@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.t-carousel-item {
+.tm-carousel-item {
+    width: 100%;
 }
 </style>

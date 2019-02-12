@@ -1,5 +1,5 @@
 <template>
-<div class="t-carousel-group">
+<div class="tm-carousel-group">
     <slot></slot>
 </div>
 </template>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.t-carousel-group {
+.tm-carousel-group {
     width: 100%;
     flex-shrink: 0;
     display: flex;
