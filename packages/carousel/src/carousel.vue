@@ -213,9 +213,9 @@ export default {
                 }
 
                 switch (action) {
-                case 'increase':
+                case 'next':
                     return this.active + 1
-                case 'decrease':
+                case 'prev':
                     return this.active - 1
                 default:
                     return this.active
@@ -311,7 +311,7 @@ export default {
             const self = this
             this.$refs.container.addEventListener('webkitTransitionEnd', function handler () {
                 self.$refs.container.removeEventListener('webkitTransitionEnd', handler)
-                self.active = self.getCurrentActive(action === 'next' ? 'increase' : 'decrease')
+                self.active = self.getCurrentActive(action)
 
                 self.moveX = 0
                 self.$refs.container.classList.remove('t-carousel-transition')
