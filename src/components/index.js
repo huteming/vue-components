@@ -30,7 +30,7 @@ export { default as TmCarouselItem } from 'packages/carousel-item'
 export { default as Cell } from 'packages/cell'
 export { default as Card } from 'packages/card'
 export { default as Clocker } from 'packages/clocker'
-export { default as Divider } from 'packages/divider'
+export { default as TmDivider } from 'packages/divider'
 
 export { default as Actionsheet } from 'packages/actionsheet'
 export { default as Toast } from 'packages/toast'

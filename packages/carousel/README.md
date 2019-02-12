@@ -30,18 +30,19 @@ Vue.component(TmCarouselItem.name, TmCarouselItem)
 | loop | 是否循环 | Boolean | | `false` |
 | play | 是否播放, 支持 sync 修饰符 | Boolean | | `false` |
 | interval | 自动播放的时间间隔（毫秒） | Number | | `3000` |
-| vertical | 垂直方向 | Boolean | | `false` |
-| circular | 是否循环播放 | Boolean | | `false` |
-| skip | 间断播放时间, 统一方向进入，Number 为产生空白时间 | Boolean, Number | | `false` |
-| defaultIndex | 初始显示的轮播图的索引 | Number | | `0` |
-| disable-move | 禁止手势 | Boolean | | `false` |
-| disable-direction | 禁用滑动方向判断，滑动切换滑块时，事件不会冒泡 | Boolean | | `false` |
+| disabled-touch | 禁止手势 | Boolean | | `false` |
 
 ### Slot
 
 | name | 描述 |
 |------|--------|
-| - | 一个或多个 `swipe-item` 组件 |
+| - | 一个或多个 `carousel-item` 组件 |
+
+### Events
+
+| 事件名称 | 说明 | 回调参数 |
+|---------|----------|-------------|
+| change | 幻灯片切换时触发 | 目前激活的幻灯片的索引，原幻灯片的索引 |
 
 ## CarouselItem
 

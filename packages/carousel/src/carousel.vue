@@ -31,6 +31,13 @@ export default {
             default: 3000,
         },
         /**
+         * 禁止手势
+         */
+        disabledTouch: {
+            type: Boolean,
+            default: false,
+        },
+        /**
          * 一组元素个数
          * 影响事件: getCurrentActive, getRenderData, tryStopTimer
          */
@@ -129,6 +136,10 @@ export default {
 
     methods: {
         handleTouchstart (event) {
+            if (this.disabledTouch) {
+                return false
+            }
+
             const finger = event.changedTouches[0]
             this.restart = this.currentPlay
             this.currentPlay = false
@@ -154,6 +165,9 @@ export default {
             }
 
             this.isRespond = (() => {
+                if (this.disabledTouch) {
+                    return false
+                }
                 if (this.direction === 'vertical') {
                     return false
                 }
@@ -298,6 +312,8 @@ export default {
                 return
             }
 
+            const oldActive = this.active
+
             this.$refs.container.classList.add('t-carousel-transition')
             this.moveX = action === 'next' ? -this.clientWidth : this.clientWidth
 
@@ -310,6 +326,7 @@ export default {
                 self.$refs.container.classList.remove('t-carousel-transition')
 
                 callback()
+                self.$emit('change', self.active, oldActive)
             })
         },
     },

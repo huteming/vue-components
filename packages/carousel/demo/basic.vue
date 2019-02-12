@@ -1,7 +1,7 @@
 <template>
 <div class="test-carousel">
     <tm-divider>基础用法</tm-divider>
-    <tm-carousel :loop="loop" :play="play" :group="1">
+    <tm-carousel :loop="loop" :play="play" :group="1" @change="handleChange">
         <tm-carousel-item name="first">
             <div class="swiper swiper-blue">1</div>
         </tm-carousel-item>
@@ -15,8 +15,8 @@
         </tm-carousel-item>
     </tm-carousel>
 
-    <tm-divider>垂直滚动</tm-divider>
-    <tm-carousel :loop="loop" :play="play" :group="1">
+    <tm-divider>禁止手势</tm-divider>
+    <tm-carousel :loop="loop" :play="play" disabled-touch>
         <tm-carousel-item name="first">
             <div class="swiper swiper-blue">1</div>
         </tm-carousel-item>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { TmCarousel, TmCarouselItem } from 'tommy-ui'
+import { TmCarousel, TmCarouselItem, TmDivider } from 'tommy-ui'
 
 export default {
     data () {
@@ -45,7 +45,7 @@ export default {
     },
 
     methods: {
-        handleChange (val) {
+        handleChange (...val) {
             console.log('change', val)
         }
     },
@@ -62,6 +62,7 @@ export default {
     components: {
         TmCarousel,
         TmCarouselItem,
+        TmDivider,
     }
 }
 </script>
