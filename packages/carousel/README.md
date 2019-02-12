@@ -5,18 +5,20 @@
 ## 引入
 
 ```javascript
-import { Carousel, CarouselItem } from 'tommy-ui'
+import { TmCarousel, TmCarouselItem } from 'tommy-ui'
 
-Vue.component(Carousel.name, Carousel)
-Vue.component(CarouselItem.name, CarouselItem)
+Vue.component(TmCarousel.name, TmCarousel)
+Vue.component(TmCarouselItem.name, TmCarouselItem)
 ```
 
 ## 例子
 
 ```html
-<base-carousel>
-    <base-carousel-item>内容</base-carousel-item>
-</base-carousel>
+<tm-carousel v-model="current" :loop="loop" :play="play" :group="1">
+    <tm-carousel-item>
+        <div class="swiper swiper-blue">1</div>
+    </tm-carousel-item>
+</tm-carousel>
 ```
 
 ## Carousel
@@ -24,8 +26,8 @@ Vue.component(CarouselItem.name, CarouselItem)
 ### API
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |------|-------|---------|-------|--------|
-| height | 高度 | String | | `200px` |
-| value | 当前显示 | String, Number | | `0` |
+| value | 当前显示 | Number | | `0` |
+| loop | 是否循环 | Boolean | | `false` |
 | play | 是否播放, 支持 sync 修饰符 | Boolean | | `false` |
 | interval | 自动播放的时间间隔（毫秒） | Number | | `3000` |
 | vertical | 垂直方向 | Boolean | | `false` |
