@@ -143,8 +143,5 @@ export default {
             }, 1000)
         }
     },
-
-    created () {
-    }
 }
 </script>

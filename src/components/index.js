@@ -29,7 +29,7 @@ export { default as TmCarousel } from 'packages/carousel'
 export { default as TmCarouselItem } from 'packages/carousel-item'
 export { default as Cell } from 'packages/cell'
 export { default as Card } from 'packages/card'
-export { default as Clocker } from 'packages/clocker'
+export { default as TmClocker } from 'packages/clocker'
 export { default as TmDivider } from 'packages/divider'
 
 export { default as Actionsheet } from 'packages/actionsheet'

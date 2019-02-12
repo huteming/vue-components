@@ -5,16 +5,16 @@
 ## 引入
 
 ```javascript
-import { Clocker } from 'tommy-ui';
+import { TmClocker } from 'tommy-ui'
 
-Vue.use(Clocker)
-// Vue.component(Clocker.name, Clocker)
+Vue.use(TmClocker)
+// Vue.component(TmClocker.name, TmClocker)
 ```
 
 ## 例子
 
 ```html
-<base-clocker :start-time="start" :end-time="end" @end="handleEnd">
+<tm-clocker :start-time="start" :end-time="end" @end="handleEnd">
     <template slot-scope="scope">
         <div>{{ scope.whole }}</div>
         <div>{{ scope.days }}</div>
@@ -22,7 +22,7 @@ Vue.use(Clocker)
         <div>{{ scope.minutes }}</div>
         <div>{{ scope.seconds }}</div>
     </template>
-</base-clocker>
+</tm-clocker>
 ```
 
 ## API

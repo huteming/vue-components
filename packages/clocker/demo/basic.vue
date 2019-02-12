@@ -1,8 +1,8 @@
 <template>
 <div class="page-example">
-    <base-divider>倒计时结束</base-divider>
+    <tm-divider>倒计时结束</tm-divider>
 
-    <base-clocker :start-time="maps[1].start" :end-time="maps[1].end" @end="handleEnd">
+    <tm-clocker :start-time="maps[1].start" :end-time="maps[1].end" @end="handleEnd">
         <template slot-scope="scope">
             <div>{{ scope.whole }}</div>
             <div>{{ scope.days }}</div>
@@ -10,11 +10,11 @@
             <div>{{ scope.minutes }}</div>
             <div>{{ scope.seconds }}</div>
         </template>
-    </base-clocker>
+    </tm-clocker>
 
-    <base-divider>持续进行</base-divider>
+    <tm-divider>持续进行</tm-divider>
 
-    <base-clocker :start-time="maps[0].start" :end-time="maps[0].end">
+    <tm-clocker :start-time="maps[0].start" :end-time="maps[0].end">
         <template slot-scope="scope">
             <div>{{ scope.whole }}</div>
             <div>{{ scope.days }}</div>
@@ -22,19 +22,19 @@
             <div>{{ scope.minutes }}</div>
             <div>{{ scope.seconds }}</div>
         </template>
-    </base-clocker>
+    </tm-clocker>
 </div>
 </template>
 
 <script>
-import { Clocker as BaseClocker, Toast, Divider as BaseDivider } from 'tommy-ui'
+import { TmClocker, TmDivider } from 'tommy-ui'
 
 export default {
     data () {
         return {
             maps: [
                 { start: '2017-06-15 20:53:25', end: '2018-07-18 21:54:35' },
-                { start: '2018-07-18 21:54:30', end: '2018-07-18 21:54:35' },
+                { start: '2018-07-18 21:54:30', end: '2018-07-18 21:54:35' }, // 5s 结束
                 { start: '2018-07-18 21:54:30', end: '2018-07-16 21:54:35' },
                 { start: '', end: '' },
                 { start: '2018-07-18 21:54:30', end: '' },
@@ -47,7 +47,7 @@ export default {
 
     methods: {
         handleEnd () {
-            Toast('end')
+            alert('end')
         },
         handleReset () {
             const save = this.activeIndex
@@ -65,8 +65,8 @@ export default {
     },
 
     components: {
-        BaseClocker,
-        BaseDivider
+        TmClocker,
+        TmDivider,
     }
 }
 </script>
