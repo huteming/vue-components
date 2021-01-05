@@ -29,7 +29,7 @@
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-standard": "^3.0.1",
     "@vue/test-utils": "^1.0.0-beta.20",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chai": "^4.1.2",
     "crypto-js": "^3.1.9-1",
     "element-ui": "^2.4.6",
